@@ -1,0 +1,144 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: fixed;
+  background-color: white;
+  align-items: center;
+  flex-wrap: nowrap;
+  min-height: 64px;
+  width: 100%;
+  overflow: visible;
+  z-index: 1000;
+  justify-content: center;
+
+  &__menu-fold {
+    height: 64px;
+    width: 64px;
+    justify-content: center;
+    display: flex;
+
+    .anticon-menu-fold {
+      align-self: center;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    color: #f56565;
+    margin-right: 16px;
+    align-items: center;
+
+    Icon {
+      font-size: 20px;
+    }
+
+    span {
+      margin-left: 5px;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+
+    &-icon {
+      display: flex;
+      width: 32px;
+      color: black;
+      justify-content: center;
+      font-size: 18px;
+
+      .anticon-search {
+        margin-top: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &-input {
+      display: flex;
+      flex-grow: 1;
+
+      input {
+        display: flex;
+        flex-grow: 1;
+        border: none !important;
+        font-size: 1.12rem;
+        padding: 8px 8px 8px 0;
+        outline: none !important;
+      }
+    }
+  }
+
+  &__suggestions {
+    z-index: 1;
+    display: flex;
+    flex-wrap: none;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+
+    div {
+      margin-right: 12px;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+    .anticon {
+      justify-content: center;
+      align-self: center;
+      margin-top: 2px;
+      width: 1.28571429em;
+    }
+
+    &-star-icon {
+      color: orange;
+    }
+    &-help {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    &-notification {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    &-user {
+      width: 36px;
+      height: 36px;
+      border: 50%;
+      display: flex;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgb(152, 89, 166);
+      margin-top: auto;
+      margin-bottom: auto;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
