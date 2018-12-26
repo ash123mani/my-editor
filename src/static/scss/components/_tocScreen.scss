@@ -134,3 +134,35 @@
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
   transition: opacity 500ms, top 500ms;
 }
+
+.demo-class {
+  .ant-popover-arrow {
+    background: #fa5560;
+  }
+  .ant-popover-inner-content {
+    background: #fa5560;
+    padding: 10px 0;
+  }
+  .create-options {
+    cursor: pointer;
+    &__item {
+      font-size: 14px;
+      padding-left: 12px;
+      min-height: 32px;
+      line-height: 30px;
+      span {
+        margin-left: 8px;
+      }
+    }
+  }
+  .ant-popover-inner {
+    width: 162px;
+  }
+  .create-options__item:hover {
+    background-color: #d7aaaa4d;
+    transition: background-color 0.1s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .anticon {
+    width: 1.28571429em;
+  }
+}

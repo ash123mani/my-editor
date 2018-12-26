@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Header from "./components/header";
-import Options from "./containers/options";
-import EditorScreen from "./components/EditorScreen";
-// import "./App.scss";
+import Options from "./containers/Options";
+import EditorScreenWrapper from "./containers/EditorScreenWrapper";
 
 class App extends Component {
   render() {
@@ -10,7 +9,7 @@ class App extends Component {
       <div className='App'>
         <Header />
         <Options />
-        <EditorScreen />
+        <EditorScreenWrapper />
       </div>
     );
   }
