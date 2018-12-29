@@ -29,6 +29,7 @@ class TOCScreen extends React.Component {
   onClusterOptionsClick = e => {
     this.props.itemToCreate("cluster");
   };
+
   render() {
     return (
       <div className='toc-conatiner'>

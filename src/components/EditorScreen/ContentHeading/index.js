@@ -6,6 +6,10 @@ class ContentHeading extends React.Component {
     editorStateOne: EditorState.createEmpty()
   };
 
+  componentDidUpdate() {
+    this.focus();
+  }
+
   componentDidMount() {
     this.focus();
   }

@@ -5,6 +5,8 @@
   "dependencies": {
     "antd": "^3.11.4",
     "draft-js": "^0.10.5",
+    "draft-js-inline-toolbar-plugin": "^3.0.0",
+    "draft-js-plugins-editor": "^2.1.1",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -26,5 +28,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "css-loader": "^2.1.0",
+    "style-loader": "^0.23.1"
+  }
 }
