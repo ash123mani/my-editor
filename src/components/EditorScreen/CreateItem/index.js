@@ -9,11 +9,11 @@ class CreateItem extends React.Component {
       <div className='create-item'>
         {this.props.selectedItem === "item" ? (
           <React.Fragment>
-            <ContentHeading />
+            <ContentHeading heading='item' />
             <ContentEditor />
           </React.Fragment>
         ) : (
-          <ContentHeading />
+          <ContentHeading heading='cluster' />
         )}
       </div>
     );

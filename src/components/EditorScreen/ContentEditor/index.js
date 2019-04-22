@@ -1,4 +1,5 @@
 import React from "react";
+import { convertToRaw } from "draft-js";
 import Editor, { createEditorStateWithText } from "draft-js-plugins-editor";
 import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin";
 import "draft-js-inline-toolbar-plugin/lib/plugin.css";
@@ -15,6 +16,8 @@ class ContentEditor extends React.Component {
   };
 
   onChangeTwo = editorState => {
+    const contentState = editorState.getCurrentContent();
+    console.log("contenteditor current editor state", convertToRaw(contentState));
     this.setState({
       editorStateTwo: editorState
     });
