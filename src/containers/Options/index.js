@@ -1,11 +1,11 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import OptionsBar from "./../../components/optionsBar";
-import { setTab } from "./../../redux/actions/setTabActions";
+import OptionsBar from './../../components/optionsBar';
+import { setTab } from './../../redux/actions/setTabActions';
 
 const mapStateToProps = state => {
   return {
-    selectedTab: state.selectedTabReducer.selectedTab
+    selectedTab: state.selectedTab.selectedTab
   };
 };
 

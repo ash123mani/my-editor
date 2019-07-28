@@ -1,20 +1,13 @@
-import React from "react";
-import { Editor, EditorState, convertToRaw, convertFromRaw, getDefaultKeyBinding } from "draft-js";
+import React from 'react';
+import { Editor, EditorState, convertToRaw, convertFromRaw, getDefaultKeyBinding } from 'draft-js';
 
 class ContentHeading extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorStateTwo: EditorState.createEmpty()
+      editorStateTwo: EditorState.createEmpty(),
+      editorStateOne: EditorState.createEmpty()
     };
-
-    const content = window.localStorage.getItem("headingContent");
-
-    if (content) {
-      this.state.editorStateOne = EditorState.createWithContent(convertFromRaw(JSON.parse(content)));
-    } else {
-      this.state.editorStateOne = EditorState.createEmpty();
-    }
   }
 
   componentDidUpdate() {
@@ -25,15 +18,8 @@ class ContentHeading extends React.Component {
     this.focus();
   }
 
-  saveContent = headingContent => {
-    window.localStorage.setItem("headingContent", JSON.stringify(convertToRaw(headingContent)));
-  };
-
-  onChangeOne = editorState => {
-    if (this.props.heading === "cluster") {
-      const contentState = editorState.getCurrentContent();
-      this.saveContent(contentState);
-      console.log("contentheading current editor state", convertToRaw(contentState));
+  onChangeHeading = editorState => {
+    if (this.props.heading === 'cluster') {
       this.setState({
         editorStateOne: editorState
       });
@@ -46,17 +32,21 @@ class ContentHeading extends React.Component {
 
   keyBindingFn = e => {
     if (e.keyCode === 13) {
-      return "enter-pressed";
+      return 'enter-pressed';
     }
     return getDefaultKeyBinding(e);
   };
 
   handleKeyCommand = command => {
-    console.log("command", command);
-    if (command) {
-      return "handled";
+    if (command === 'enter-pressed') {
+      const contentState = this.state.editorStateOne.getCurrentContent();
+      this.props.setTitle(convertToRaw(contentState));
+      this.setState({
+        editorStateOne: EditorState.createEmpty()
+      });
+      return 'handled';
     }
-    return "not-handled";
+    return 'not-handled';
   };
 
   focus = () => {
@@ -69,9 +59,9 @@ class ContentHeading extends React.Component {
         <div className='tag'>
           <div className='tag-name'>Add Item</div>
         </div>
-        {this.props.heading === "cluster" ? (
+        {this.props.heading === 'cluster' ? (
           <Editor
-            onChange={this.onChangeOne}
+            onChange={this.onChangeHeading}
             editorState={this.state.editorStateOne}
             handleKeyCommand={this.handleKeyCommand}
             keyBindingFn={this.keyBindingFn}

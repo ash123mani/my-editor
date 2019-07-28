@@ -1,0 +1,11 @@
+{
+  "editor.formatOnSave": true,
+  "prettier.printWidth": 120,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wrappingIndent": "indent",
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "editor.fontLigatures": true,
+  "editor.wordWrapColumn": 120,
+  "editor.showUnused": false
+}

@@ -2,18 +2,21 @@ import React from "react";
 import { connect } from "react-redux";
 
 import CreateItem from "../../../components/EditorScreen/CreateItem";
+import { setClusterTitle } from "../../../redux/actions/clusterContent";
 
 class ContentScreen extends React.Component {
   render() {
+    const { selectedItem, setClusterTitle } = this.props;
+
     return (
-      <div className='content-screen'>
-        <div className='content-screen__wrapper'>
+      <div className="content-screen">
+        <div className="content-screen__wrapper">
           {!this.props.selectedItem ? (
-            <div className='content-screen--empty'>
+            <div className="content-screen--empty">
               <h1>Select an item or cluster</h1>
             </div>
           ) : (
-            <CreateItem selectedItem={this.props.selectedItem} />
+            <CreateItem selectedItem={selectedItem} setClusterTitle={setClusterTitle} />
           )}
         </div>
       </div>
@@ -21,13 +24,19 @@ class ContentScreen extends React.Component {
   }
 }
 
-const mapDispatchToProps = state => {
+const mapDispatchToProps = dispatch => {
   return {
-    selectedItem: state.createItemReducer.selectedItem
+    setClusterTitle: clusterTitle => dispatch(setClusterTitle(clusterTitle))
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    selectedItem: state.createItem.selectedItem
   };
 };
 
 export default connect(
-  mapDispatchToProps,
-  null
+  mapStateToProps,
+  mapDispatchToProps
 )(ContentScreen);

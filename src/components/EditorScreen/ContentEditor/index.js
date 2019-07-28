@@ -17,7 +17,7 @@ class ContentEditor extends React.Component {
 
   onChangeTwo = editorState => {
     const contentState = editorState.getCurrentContent();
-    console.log("contenteditor current editor state", convertToRaw(contentState));
+    // console.log("contenteditor current editor state", convertToRaw(contentState));
     this.setState({
       editorStateTwo: editorState
     });

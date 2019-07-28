@@ -4,7 +4,7 @@ const initialState = {
   selectedTab: "All"
 };
 
-export const selectedTabReducer = (state = initialState, action) => {
+export const selectedTab = (state = initialState, action) => {
   switch (action.type) {
     case SELECTED_TAB:
       return {

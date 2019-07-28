@@ -4,7 +4,7 @@ let initialState = {
   selectedItem: null
 };
 
-export const createItemReducer = (state = initialState, action) => {
+export const createItem = (state = initialState, action) => {
   switch (action.type) {
     case ITEM_TO_CREATE:
       return {

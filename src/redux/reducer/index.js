@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import { selectedTabReducer } from "./selectedTabReducer";
-import { createItemReducer } from "./createItemReducer";
+import { selectedTab } from "./selectedTab";
+import { createItem } from "./createItem";
+import { clusterContent } from "./clusterContent";
 
 export default combineReducers({
-  selectedTabReducer,
-  createItemReducer
+  selectedTab,
+  createItem,
+  clusterContent
 });
