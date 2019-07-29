@@ -19,15 +19,15 @@ class ContentHeading extends React.Component {
   }
 
   onChangeHeading = editorState => {
-    if (this.props.heading === 'cluster') {
-      this.setState({
-        editorStateOne: editorState
-      });
-    } else {
-      this.setState({
-        editorStateTwo: editorState
-      });
-    }
+    // if (this.props.heading === 'cluster') {
+    this.setState({
+      editorStateOne: editorState
+    });
+    // } else {
+    // this.setState({
+    //   editorStateTwo: editorState
+    // });
+    // }
   };
 
   keyBindingFn = e => {
@@ -40,7 +40,9 @@ class ContentHeading extends React.Component {
   handleKeyCommand = command => {
     if (command === 'enter-pressed') {
       const contentState = this.state.editorStateOne.getCurrentContent();
-      this.props.setTitle(convertToRaw(contentState));
+      if (this.props.heading === 'cluster') {
+        this.props.setTitle(convertToRaw(contentState));
+      }
       this.setState({
         editorStateOne: EditorState.createEmpty()
       });
@@ -59,7 +61,7 @@ class ContentHeading extends React.Component {
         <div className='tag'>
           <div className='tag-name'>Add Item</div>
         </div>
-        {this.props.heading === 'cluster' ? (
+        {/* {this.props.heading === 'cluster' ? (
           <Editor
             onChange={this.onChangeHeading}
             editorState={this.state.editorStateOne}
@@ -71,15 +73,24 @@ class ContentHeading extends React.Component {
           />
         ) : (
           <Editor
-            onChange={this.onChangeOne}
-            editorState={this.state.editorStateTwo}
+            onChange={this.onChangeHeading}
+            editorState={this.state.editorStateOne}
             // handleKeyCommand={this.handleKeyCommand}
             // keyBindingFn={this.keyBindingFn}
             ref={element => {
               this.editor = element;
             }}
           />
-        )}
+        )} */}
+        <Editor
+          onChange={this.onChangeHeading}
+          editorState={this.state.editorStateOne}
+          handleKeyCommand={this.handleKeyCommand}
+          keyBindingFn={this.keyBindingFn}
+          ref={element => {
+            this.editor = element;
+          }}
+        />
       </div>
     );
   }
