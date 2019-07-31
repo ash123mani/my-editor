@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Icon, Popover } from 'antd';
 import 'antd/dist/antd.css';
 
-class TOCDHeader extends Component {
+class TOCHeader extends Component {
   state = {
     clicked: false
   };
@@ -83,4 +83,4 @@ class TOCDHeader extends Component {
   }
 }
 
-export default TOCDHeader;
+export default TOCHeader;
