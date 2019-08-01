@@ -20,5 +20,3 @@ export const clusterContent = (state = initialState, action) => {
       return state;
   }
 };
-
-

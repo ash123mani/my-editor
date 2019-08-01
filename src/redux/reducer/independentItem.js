@@ -1,11 +1,8 @@
-import { INDEPENDENT_ITEM_HEADING, INDEPENDENT_ITEM_CONTENT } from '../actions/types'
+import { INDEPENDENT_ITEM_HEADING, INDEPENDENT_ITEM_CONTENT } from '../actions/types';
 
-const initialState = {
-  items: {}
-}
+const initialState = {};
 
-
-export const indepandentItem = (state = initialState, action) => {
+export const independentItem = (state = initialState, action) => {
   const itemId = action.payload && action.payload.itemId;
 
   switch (action.type) {
@@ -13,13 +10,13 @@ export const indepandentItem = (state = initialState, action) => {
       return {
         ...state,
         currentHeading: { ...state.currentHeading, ...action.payload }
-      }
+      };
     case INDEPENDENT_ITEM_CONTENT:
       return {
         ...state,
         currentContent: { ...state.currentContent, ...action.payload }
-      }
+      };
     default:
       return state;
   }
-}
+};

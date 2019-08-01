@@ -63,6 +63,7 @@
     margin-right: auto;
     margin-left: auto;
     margin-top: -30px;
+    flex-grow: 1;
 
     .DraftEditor-editorContainer {
       width: 100%;
@@ -79,6 +80,18 @@
       font-weight: lighter;
       line-height: 2rem;
       word-spacing: 2px;
+    }
+  }
+
+  &__submit-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+    margin-right: 60px;
+
+    .ant-btn-dashed{
+      color: rgb(250, 102, 112);
+      border-color: #483b3c;
     }
   }
 }

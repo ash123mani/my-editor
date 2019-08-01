@@ -5,7 +5,9 @@ import TOCScreen from '../../../components/EditorScreen/TOCScreen';
 
 const mapStateToProps = state => {
   return {
-    clusters: state.clusterContent.clusters
+    clusters: state.clusterContent.clusters,
+    items: state.itemContent.items,
+    itemType: state.createItem.selectedItem
   };
 };
 

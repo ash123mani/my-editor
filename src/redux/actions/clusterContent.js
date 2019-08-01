@@ -6,8 +6,9 @@ export const setClusterTitle = title => {
   return {
     type: NEW_CLUSTER_TITLE,
     payload: {
-      content: title,
-      clusterId: uuidv1()
+      title: title,
+      clusterId: uuidv1(),
+      type: 'cluster'
     }
   };
 };

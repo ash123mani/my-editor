@@ -1,11 +1,13 @@
 import React from 'react';
-import { Editor, EditorState, convertToRaw, convertFromRaw, getDefaultKeyBinding } from 'draft-js';
+import { Editor, EditorState, convertToRaw, convertFromRaw, getDefaultKeyBinding, ContentState } from 'draft-js';
+
+const contentStae = ContentState.createFromText('Title Please....');
 
 class ContentHeading extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorStateOne: EditorState.createEmpty()
+      editorStateOne: EditorState.createWithContent(contentStae)
     };
   }
 
@@ -13,10 +15,19 @@ class ContentHeading extends React.Component {
     this.focus();
   }
 
+  componentDidUpdate() {
+    this.focus();
+  }
+
   onChangeHeading = editorState => {
     this.setState({
       editorStateOne: editorState
     });
+    const contentState = this.state.editorStateOne.getCurrentContent();
+    const rawState = convertToRaw(contentState);
+    if (this.props.heading === 'item') {
+      this.props.setIndependentItemHeading(rawState);
+    }
   };
 
   keyBindingFn = e => {
@@ -33,14 +44,11 @@ class ContentHeading extends React.Component {
 
       if (this.props.heading === 'cluster') {
         this.props.setTitle(rawState);
-        this.setState({
-          editorStateOne: EditorState.createEmpty()
-        });
+        this.props.itemToCreate('');
       }
 
       if (this.props.heading === 'item') {
         this.props.onConetntEditorFocus();
-        this.props.setIndependentItemHeading(rawState);
       }
 
       return 'handled';
@@ -49,6 +57,7 @@ class ContentHeading extends React.Component {
   };
 
   focus = () => {
+    console.log('hijiji @@@@@@@@@@@@@', this.editor);
     this.editor.focus();
   };
 

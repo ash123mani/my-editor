@@ -23,16 +23,14 @@ class ContentEditor extends React.Component {
   }
 
   onChangeTwo = editorState => {
-
     this.setState({
       editorStateTwo: editorState
     });
 
     const contentState = this.state.editorStateTwo.getCurrentContent();
     const rawState = convertToRaw(contentState);
-    console.log(rawState)
 
-    this.props.setIndependentItemContent(rawState)
+    this.props.setIndependentItemContent(rawState);
   };
 
   render() {

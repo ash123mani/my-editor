@@ -12,7 +12,8 @@ const menu = (
 
 class TOCCard extends React.Component {
   render() {
-    const data = this.props.clusters;
+    const { clusters, items, itemType } = this.props;
+    const data = [...clusters, ...items];
 
     return (
       <div className='toc-card'>
@@ -21,9 +22,9 @@ class TOCCard extends React.Component {
           dataSource={data}
           renderItem={item => (
             <List.Item>
-              <Icon type='right' />
-              <List.Item.Meta description={`${item.content.blocks[0].text}`} />
-              <Icon type='plus' />
+              {item.type === 'cluster' ? <Icon type='copyright' /> : <Icon type='info-circle' />}
+              <List.Item.Meta description={`${item.title.blocks[0].text}`} />
+              {item.type === 'cluster' ? <Icon type='plus' /> : <Icon type='like' />}
               <Dropdown overlay={menu}>
                 <Icon type='more' />
               </Dropdown>
