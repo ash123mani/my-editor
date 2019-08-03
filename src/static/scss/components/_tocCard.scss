@@ -17,6 +17,28 @@
       color: #fa8a91;
     }
   }
+
+  hr {
+  }
+
+  .cluster-item {
+    grid-column: 1/-1;
+    margin-left: 12%;
+
+    &-title {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #c89699;
+
+      > .ant-list-item-meta {
+        margin-left: 10px;
+      }
+    }
+
+    &-title:nth-last-of-type() {
+      border-bottom: none;
+    }
+  }
 }
 
 .circle {

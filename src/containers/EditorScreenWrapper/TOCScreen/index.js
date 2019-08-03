@@ -5,10 +5,13 @@ import { setSelectedId } from '../../../redux/actions/currentSelectedType';
 import TOCScreen from '../../../components/EditorScreen/TOCScreen';
 
 const mapStateToProps = state => {
+  const { clusterContent, itemContent, createItem, selectedType } = state;
   return {
-    clusters: state.clusterContent.clusters,
-    items: state.itemContent.items,
-    itemType: state.createItem.selectedItem
+    clusters: clusterContent.clusters,
+    items: itemContent.items,
+    itemType: createItem.selectedItem,
+    clusterItems: clusterContent.clusterItems,
+    selectedStuffId: selectedType.id
   };
 };
 

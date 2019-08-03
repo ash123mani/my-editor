@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { List, Avatar, Icon, Menu, Dropdown, Popover } from 'antd';
+import { List, Avatar, Icon, Menu, Dropdown, Popover, Card } from 'antd';
 
 const menu = (
   <Menu>
@@ -11,14 +11,53 @@ const menu = (
 );
 
 class TOCCard extends React.Component {
+  state = {
+    isItemClicked: false
+  };
+
   createClusterItem = event => {
     console.log('id of parent is', event.target.id);
     this.props.itemToCreate('clusterItem');
     this.props.setSelectedId(event.target.id);
   };
 
+  itemClicked = (slectedItemId, event) => {
+    this.props.setSelectedId(slectedItemId);
+    this.setState({ isItemClicked: !this.state.isItemClicked });
+  };
+
+  renderItemClusters = item => {
+    return (
+      <div className='cluster-item'>
+        {this.props.clusterItems.map(clusterItem => {
+          if (clusterItem.parentId === item.id) {
+            const data = [clusterItem.title.blocks[0].text];
+            return (
+              <React.Fragment>
+                {/* <hr /> */}
+                <List
+                  itemLayout='horizontal'
+                  dataSource={data}
+                  renderItem={item => (
+                    <div className='cluster-item-title'>
+                      <List.Item.Meta description={`${clusterItem.title.blocks[0].text}`} />
+                    </div>
+                  )}
+                />
+                {/* <hr /> */}
+              </React.Fragment>
+            );
+          } else {
+            return null;
+          }
+        })}
+      </div>
+    );
+  };
+
   render() {
-    const { clusters, items, itemType } = this.props;
+    const { clusters, items, clusterItems, selectedStuffId } = this.props;
+    const { isItemClicked } = this.state;
     const data = [...clusters, ...items];
 
     return (
@@ -29,7 +68,10 @@ class TOCCard extends React.Component {
           renderItem={item => (
             <List.Item>
               {item.type === 'cluster' ? <Icon type='copyright' /> : <Icon type='info-circle' />}
-              <List.Item.Meta description={`${item.title.blocks[0].text}`} />
+
+              <div onClick={this.itemClicked.bind(this, item.id)} id='title' data-id={item.id}>
+                <List.Item.Meta description={`${item.title.blocks[0].text}`} />
+              </div>
 
               {item.type === 'cluster' ? (
                 <Popover placement='top' content='Create Item'>
@@ -42,7 +84,8 @@ class TOCCard extends React.Component {
               <Dropdown overlay={menu}>
                 <Icon type='more' />
               </Dropdown>
-              {/* <h4>Hi</h4> */}
+
+              {isItemClicked && selectedStuffId === item.id ? this.renderItemClusters(item) : null}
             </List.Item>
           )}
         />
