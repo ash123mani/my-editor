@@ -1,7 +1,8 @@
-import { NEW_CLUSTER_TITLE } from '../actions/types';
+import { NEW_CLUSTER_TITLE, NEW_CLUSTER_ITEM } from '../actions/types';
 
 const initialState = {
-  clusters: {}
+  clusters: {},
+  clusterItems: {}
 };
 
 export const clusterContent = (state = initialState, action) => {
@@ -14,6 +15,14 @@ export const clusterContent = (state = initialState, action) => {
         clusters: {
           ...state.clusters,
           ...{ [clusterId]: action.payload }
+        }
+      };
+    case NEW_CLUSTER_ITEM:
+      return {
+        ...state,
+        clusterItems: {
+          ...state.clusterItems,
+          ...{ [action.payload.itemId]: action.payload.clusterItemData }
         }
       };
     default:

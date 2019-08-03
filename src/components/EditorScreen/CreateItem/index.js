@@ -19,12 +19,35 @@ class CreateItem extends React.Component {
       title: this.props.currentItemHeading,
       content: this.props.currentItemContent
     };
-    this.props.createItemContent(data);
+
+    if (this.props.selectedItem === 'item') {
+      this.props.createItemContent(data);
+    } else {
+      const clusterItemData = {
+        parentId: this.props.selectedTypeId,
+        data: {
+          title: this.props.currentItemHeading,
+          content: this.props.currentItemContent
+        }
+      };
+      this.props.setClusterItem(clusterItemData);
+    }
+
     this.props.itemToCreate('');
   };
 
   render() {
-    const { setClusterTitle, setIndependentItemHeading, setIndependentItemContent, itemToCreate } = this.props;
+    const {
+      setClusterTitle,
+      setIndependentItemHeading,
+      setIndependentItemContent,
+      itemToCreate,
+      selectedItem,
+      setClusterItem,
+      selectedTypeId,
+      currentItemContent,
+      currentItemHeading
+    } = this.props;
     const { size } = this.state;
 
     return (
@@ -40,6 +63,7 @@ class CreateItem extends React.Component {
               isContentEditorFocused={this.state.contentEditorFocused}
               onConetntEditorFocus={this.onConetntEditorFocus}
               setIndependentItemContent={setIndependentItemContent}
+              selectedItem={selectedItem}
             />
             <div className='create-item__submit-button'>
               <Button type='dashed' size={size} onClick={this.onSubmitItem}>

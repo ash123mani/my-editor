@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import CreateItem from '../../../components/EditorScreen/CreateItem';
-import { setClusterTitle } from '../../../redux/actions/clusterContent';
+import { setClusterTitle, setClusterItem } from '../../../redux/actions/clusterContent';
 import { setIndependentItemHeading, setIndependentItemContent } from '../../../redux/actions/independentItems';
 import { createItemContent } from '../../../redux/actions/createItemContent';
 import { itemToCreate } from '../../../redux/actions/createItemActions';
@@ -19,7 +19,9 @@ class ContentScreen extends React.Component {
       createItemContent,
       items,
       clusters,
-      itemToCreate
+      itemToCreate,
+      setClusterItem,
+      selectedTypeId
     } = this.props;
 
     return (
@@ -39,6 +41,8 @@ class ContentScreen extends React.Component {
               currentItemHeading={currentItemHeading}
               createItemContent={createItemContent}
               itemToCreate={itemToCreate}
+              setClusterItem={setClusterItem}
+              selectedTypeId={selectedTypeId}
             />
           )}
         </div>
@@ -53,16 +57,18 @@ const mapDispatchToProps = dispatch => {
     setIndependentItemHeading: data => dispatch(setIndependentItemHeading(data)),
     setIndependentItemContent: data => dispatch(setIndependentItemContent(data)),
     createItemContent: data => dispatch(createItemContent(data)),
-    itemToCreate: itemType => dispatch(itemToCreate(itemType))
+    itemToCreate: itemType => dispatch(itemToCreate(itemType)),
+    setClusterItem: clusterItemData => dispatch(setClusterItem(clusterItemData))
   };
 };
 
 const mapStateToProps = state => {
-  const { createItem, independentItem } = state;
+  const { createItem, independentItem, selectedType } = state;
   return {
     selectedItem: createItem.selectedItem,
     currentItemContent: independentItem.currentContent,
-    currentItemHeading: independentItem.currentHeading
+    currentItemHeading: independentItem.currentHeading,
+    selectedTypeId: selectedType.id
   };
 };
 

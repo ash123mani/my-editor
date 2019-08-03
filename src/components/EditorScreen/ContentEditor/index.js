@@ -22,10 +22,6 @@ class ContentEditor extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   this.editorContent.focus();
-  // }
-
   onChangeTwo = editorState => {
     this.setState({
       editorStateTwo: editorState
@@ -33,7 +29,6 @@ class ContentEditor extends React.Component {
 
     const contentState = this.state.editorStateTwo.getCurrentContent();
     const rawState = convertToRaw(contentState);
-
     this.props.setIndependentItemContent(rawState);
   };
 

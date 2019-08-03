@@ -1,4 +1,4 @@
-import { EditorState, ContentState, SelectionState } from 'draft-js';
+import { EditorState, ContentState, SelectionState, convertFromRaw } from 'draft-js';
 
 export default {
   /**
@@ -27,5 +27,11 @@ export default {
       focusOffset: length
     });
     return EditorState.forceSelection(editorState, selection);
+  },
+
+  editorStateFromRawData: rawData => {
+    const contentState = ContentState.createFromBlockArray(convertFromRaw(rawData));
+    const editorState = EditorState.createWithContent(contentState);
+    return editorState;
   }
 };

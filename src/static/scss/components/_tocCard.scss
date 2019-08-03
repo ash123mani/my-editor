@@ -9,12 +9,20 @@
     /* justify-content: center; */
     grid-template-columns: 0.5fr 3fr 0.2fr 0.5fr;
   }
+
+  .anticon-like {
+    svg {
+      height: 100%;
+      width: 100%;
+      color: #fa8a91;
+    }
+  }
 }
 
 .circle {
   border-radius: 50%;
-  width: 10px;
-  height: 10px;
+  width: 100%;
+  height: 60%;
   position: relative;
   // background-color: #f66c6d;
   color: #f66c6d;
