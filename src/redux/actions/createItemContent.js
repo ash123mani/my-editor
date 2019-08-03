@@ -11,10 +11,9 @@ export const createItemContent = itemData => {
       item: {
         title: itemData.title,
         content: itemData.content,
-        itemId: itemId,
+        id: itemId,
         type: 'item'
-      },
-      itemId: itemId
+      }
     }
   };
 };

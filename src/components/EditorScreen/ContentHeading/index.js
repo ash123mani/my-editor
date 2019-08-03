@@ -1,21 +1,28 @@
 import React from 'react';
-import { Editor, EditorState, convertToRaw, convertFromRaw, getDefaultKeyBinding, ContentState } from 'draft-js';
+import {
+  Editor,
+  EditorState,
+  convertToRaw,
+  convertFromRaw,
+  getDefaultKeyBinding,
+  ContentState,
+  SelectionState
+} from 'draft-js';
 
-const contentStae = ContentState.createFromText('Title Please....');
+import editorUtils from '../../../utils/editorUtlis';
+
+const moveSelectionToEnd = editorState => {};
 
 class ContentHeading extends React.Component {
   constructor(props) {
     super(props);
+    const contentState = ContentState.createFromText('Title');
     this.state = {
-      editorStateOne: EditorState.createWithContent(contentStae)
+      editorStateOne: editorUtils.moveSelectionToEnd(EditorState.createWithContent(contentState))
     };
   }
 
   componentDidMount() {
-    this.focus();
-  }
-
-  componentDidUpdate() {
     this.focus();
   }
 
@@ -25,6 +32,7 @@ class ContentHeading extends React.Component {
     });
     const contentState = this.state.editorStateOne.getCurrentContent();
     const rawState = convertToRaw(contentState);
+
     if (this.props.heading === 'item') {
       this.props.setIndependentItemHeading(rawState);
     }
@@ -57,7 +65,6 @@ class ContentHeading extends React.Component {
   };
 
   focus = () => {
-    console.log('hijiji @@@@@@@@@@@@@', this.editor);
     this.editor.focus();
   };
 

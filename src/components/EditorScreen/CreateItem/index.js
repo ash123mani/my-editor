@@ -29,7 +29,7 @@ class CreateItem extends React.Component {
 
     return (
       <div className='create-item'>
-        {this.props.selectedItem === 'item' ? (
+        {this.props.selectedItem !== 'cluster' ? (
           <React.Fragment>
             <ContentHeading
               heading='item'

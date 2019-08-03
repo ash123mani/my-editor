@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { itemToCreate } from '../../../redux/actions/createItemActions';
+import { setSelectedId } from '../../../redux/actions/currentSelectedType';
 import TOCScreen from '../../../components/EditorScreen/TOCScreen';
 
 const mapStateToProps = state => {
@@ -13,7 +14,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    itemToCreate: item => dispatch(itemToCreate(item))
+    itemToCreate: item => dispatch(itemToCreate(item)),
+    setSelectedId: id => dispatch(setSelectedId(id))
   };
 };
 

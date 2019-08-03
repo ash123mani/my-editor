@@ -22,6 +22,10 @@ class ContentEditor extends React.Component {
     }
   }
 
+  // componentDidMount() {
+  //   this.editorContent.focus();
+  // }
+
   onChangeTwo = editorState => {
     this.setState({
       editorStateTwo: editorState

@@ -5,7 +5,7 @@ const initialState = {
 };
 
 export const clusterContent = (state = initialState, action) => {
-  const clusterId = action.payload && action.payload.clusterId;
+  const clusterId = action.payload && action.payload.id;
 
   switch (action.type) {
     case NEW_CLUSTER_TITLE:

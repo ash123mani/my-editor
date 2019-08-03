@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { List, Avatar, Icon, Menu, Dropdown } from 'antd';
+import { List, Avatar, Icon, Menu, Dropdown, Popover } from 'antd';
 
 const menu = (
   <Menu>
@@ -11,6 +11,12 @@ const menu = (
 );
 
 class TOCCard extends React.Component {
+  createClusterItem = event => {
+    console.log('id of parent is', event.target.id);
+    this.props.itemToCreate('clusterItem');
+    this.props.setSelectedId(event.target.id);
+  };
+
   render() {
     const { clusters, items, itemType } = this.props;
     const data = [...clusters, ...items];
@@ -24,7 +30,15 @@ class TOCCard extends React.Component {
             <List.Item>
               {item.type === 'cluster' ? <Icon type='copyright' /> : <Icon type='info-circle' />}
               <List.Item.Meta description={`${item.title.blocks[0].text}`} />
-              {item.type === 'cluster' ? <Icon type='plus' /> : <Icon type='like' />}
+
+              {item.type === 'cluster' ? (
+                <Popover placement='top' content='Create Item'>
+                  <div onClick={this.createClusterItem} id={item.id} className='circle' />
+                </Popover>
+              ) : (
+                <Icon type='like' />
+              )}
+
               <Dropdown overlay={menu}>
                 <Icon type='more' />
               </Dropdown>

@@ -4,11 +4,13 @@ import { createItem } from './createItem';
 import { clusterContent } from './clusterContent';
 import { independentItem } from './independentItem';
 import { itemContent } from './itemContent';
+import { selectedType } from './currentSelectedType';
 
 export default combineReducers({
   selectedTab,
   createItem,
   clusterContent,
   independentItem,
-  itemContent
+  itemContent,
+  selectedType
 });

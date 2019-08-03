@@ -5,11 +5,9 @@ const initialState = {
 };
 
 export const itemContent = (state = initialState, action) => {
-  console.log('state is', state, 'payload is', action);
-  const itemId = action.payload && action.payload.itemId;
-
   switch (action.type) {
     case CREATE_INDEPENDENT_ITEM:
+      const itemId = action.payload && action.payload.item.id;
       return {
         ...state,
         items: {
