@@ -1,5 +1,5 @@
 import React from 'react';
-import { convertToRaw, getDefaultKeyBinding, EditorState } from 'draft-js';
+import { convertToRaw, EditorState } from 'draft-js';
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import 'draft-js-inline-toolbar-plugin/lib/plugin.css';

@@ -3,15 +3,12 @@ import {
   Editor,
   EditorState,
   convertToRaw,
-  convertFromRaw,
   getDefaultKeyBinding,
   ContentState,
-  SelectionState
 } from 'draft-js';
 
 import editorUtils from '../../../utils/editorUtlis';
 
-const moveSelectionToEnd = editorState => {};
 
 class ContentHeading extends React.Component {
   constructor(props) {

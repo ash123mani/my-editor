@@ -3,7 +3,6 @@ import { INDEPENDENT_ITEM_HEADING, INDEPENDENT_ITEM_CONTENT } from '../actions/t
 const initialState = {};
 
 export const independentItem = (state = initialState, action) => {
-  const itemId = action.payload && action.payload.itemId;
 
   switch (action.type) {
     case INDEPENDENT_ITEM_HEADING:

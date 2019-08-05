@@ -14,7 +14,8 @@ class TOCScreen extends React.Component {
       clusterItems,
       selectedStuffId,
       setSelectedClusterId,
-      selectedClusterIds
+      selectedClusterIds,
+      setSelectedClusterItemId
     } = this.props;
 
     return (
@@ -31,6 +32,7 @@ class TOCScreen extends React.Component {
             selectedStuffId={selectedStuffId}
             setSelectedClusterId={setSelectedClusterId}
             selectedClusterIds={selectedClusterIds}
+            setSelectedClusterItemId={setSelectedClusterItemId}
           />
         </div>
       </div>

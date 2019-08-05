@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Radio, Icon } from 'antd';
+import { Button } from 'antd';
 
 import ContentHeading from '../ContentHeading';
 import ContentEditor from '../ContentEditor';
@@ -43,10 +43,6 @@ class CreateItem extends React.Component {
       setIndependentItemContent,
       itemToCreate,
       selectedItem,
-      setClusterItem,
-      selectedTypeId,
-      currentItemContent,
-      currentItemHeading
     } = this.props;
     const { size } = this.state;
 

@@ -14,7 +14,7 @@ export const setClusterTitle = title => {
 
 export const setClusterItem = payload => {
   const date = new Date();
-  const itemId = `${payload.parentId}--time-${date.getTime().toString()}`;
+  const itemId = `${payload.parentId}--cItem-${date.getTime().toString()}`;
   return {
     type: NEW_CLUSTER_ITEM,
     payload: {

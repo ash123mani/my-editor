@@ -17,8 +17,6 @@ class ContentScreen extends React.Component {
       currentItemContent,
       currentItemHeading,
       createItemContent,
-      items,
-      clusters,
       itemToCreate,
       setClusterItem,
       selectedTypeId
