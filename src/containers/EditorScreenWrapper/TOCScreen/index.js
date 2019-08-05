@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { itemToCreate } from '../../../redux/actions/createItemActions';
-import { setSelectedId } from '../../../redux/actions/currentSelectedType';
+import { setSelectedId, setSelectedClusterId } from '../../../redux/actions/currentSelectedType';
 import TOCScreen from '../../../components/EditorScreen/TOCScreen';
 
 const mapStateToProps = state => {
@@ -11,14 +11,16 @@ const mapStateToProps = state => {
     items: itemContent.items,
     itemType: createItem.selectedItem,
     clusterItems: clusterContent.clusterItems,
-    selectedStuffId: selectedType.id
+    selectedStuffId: selectedType.itemParentId,
+    selectedClusterIds: selectedType.selectedClusters
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     itemToCreate: item => dispatch(itemToCreate(item)),
-    setSelectedId: id => dispatch(setSelectedId(id))
+    setSelectedId: id => dispatch(setSelectedId(id)),
+    setSelectedClusterId: id => dispatch(setSelectedClusterId(id))
   };
 };
 

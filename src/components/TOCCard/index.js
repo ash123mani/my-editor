@@ -23,7 +23,13 @@ class TOCCard extends React.Component {
 
   itemClicked = (slectedItemId, event) => {
     this.props.setSelectedId(slectedItemId);
-    this.setState({ isItemClicked: !this.state.isItemClicked });
+    if (this.props.selectedClusterIds.indexOf(slectedItemId) === -1) {
+      this.props.setSelectedClusterId(slectedItemId);
+      this.setState({ isItemClicked: true });
+    } else if (this.props.selectedStuffId === slectedItemId) {
+      this.props.setSelectedClusterId(slectedItemId);
+      this.setState({ isItemClicked: false });
+    }
   };
 
   renderItemClusters = item => {
@@ -34,7 +40,6 @@ class TOCCard extends React.Component {
             const data = [clusterItem.title.blocks[0].text];
             return (
               <React.Fragment>
-                {/* <hr /> */}
                 <List
                   itemLayout='horizontal'
                   dataSource={data}
@@ -44,7 +49,6 @@ class TOCCard extends React.Component {
                     </div>
                   )}
                 />
-                {/* <hr /> */}
               </React.Fragment>
             );
           } else {
@@ -56,7 +60,7 @@ class TOCCard extends React.Component {
   };
 
   render() {
-    const { clusters, items, clusterItems, selectedStuffId } = this.props;
+    const { clusters, items, clusterItems, selectedStuffId, selectedClusterIds } = this.props;
     const { isItemClicked } = this.state;
     const data = [...clusters, ...items];
 
@@ -85,7 +89,9 @@ class TOCCard extends React.Component {
                 <Icon type='more' />
               </Dropdown>
 
-              {isItemClicked && selectedStuffId === item.id ? this.renderItemClusters(item) : null}
+              {isItemClicked && selectedClusterIds.includes(selectedStuffId) && selectedStuffId === item.id
+                ? this.renderItemClusters(item)
+                : null}
             </List.Item>
           )}
         />

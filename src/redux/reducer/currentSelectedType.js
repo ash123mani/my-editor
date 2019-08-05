@@ -1,13 +1,19 @@
-import { SET_SELECTED_ID } from '../actions/types';
+import { SET_SELECTED_ID, SELECTED_CLUSTER_ID } from '../actions/types';
 
 const initialState = {
-  id: null
+  itemParentId: null,
+  selectedClusters: []
 };
 
 export const selectedType = (state = initialState, action) => {
   switch (action.type) {
     case SET_SELECTED_ID:
-      return { ...state, id: action.payload };
+      return { ...state, itemParentId: action.payload };
+    case SELECTED_CLUSTER_ID:
+      const selectedClusters = state.selectedClusters.includes(action.payload)
+        ? state.selectedClusters.filter(id => id !== action.payload)
+        : [...state.selectedClusters, action.payload];
+      return { ...state, selectedClusters: selectedClusters };
     default:
       return state;
   }

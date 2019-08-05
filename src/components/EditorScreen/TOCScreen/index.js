@@ -5,7 +5,17 @@ import TOCHeader from '../../TOCHeader';
 
 class TOCScreen extends React.Component {
   render() {
-    const { clusters, itemToCreate, items, itemType, setSelectedId, clusterItems, selectedStuffId } = this.props;
+    const {
+      clusters,
+      itemToCreate,
+      items,
+      itemType,
+      setSelectedId,
+      clusterItems,
+      selectedStuffId,
+      setSelectedClusterId,
+      selectedClusterIds
+    } = this.props;
 
     return (
       <div className='toc-conatiner'>
@@ -19,6 +29,8 @@ class TOCScreen extends React.Component {
             setSelectedId={setSelectedId}
             clusterItems={Object.values(clusterItems)}
             selectedStuffId={selectedStuffId}
+            setSelectedClusterId={setSelectedClusterId}
+            selectedClusterIds={selectedClusterIds}
           />
         </div>
       </div>

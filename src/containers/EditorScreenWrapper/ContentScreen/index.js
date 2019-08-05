@@ -68,7 +68,7 @@ const mapStateToProps = state => {
     selectedItem: createItem.selectedItem,
     currentItemContent: independentItem.currentContent,
     currentItemHeading: independentItem.currentHeading,
-    selectedTypeId: selectedType.id
+    selectedTypeId: selectedType.itemParentId
   };
 };
 
