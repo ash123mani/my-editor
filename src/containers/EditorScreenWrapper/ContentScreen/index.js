@@ -19,7 +19,9 @@ class ContentScreen extends React.Component {
       createItemContent,
       itemToCreate,
       setClusterItem,
-      selectedTypeId
+      selectedTypeId,
+      selectedClusterItemId,
+      clusterItems
     } = this.props;
 
     return (
@@ -41,6 +43,8 @@ class ContentScreen extends React.Component {
               itemToCreate={itemToCreate}
               setClusterItem={setClusterItem}
               selectedTypeId={selectedTypeId}
+              selectedClusterItemId={selectedClusterItemId}
+              clusterItems={clusterItems}
             />
           )}
         </div>
@@ -61,12 +65,14 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  const { createItem, independentItem, selectedType } = state;
+  const { createItem, independentItem, selectedType, clusterContent } = state;
   return {
     selectedItem: createItem.selectedItem,
     currentItemContent: independentItem.currentContent,
     currentItemHeading: independentItem.currentHeading,
-    selectedTypeId: selectedType.itemParentId
+    selectedTypeId: selectedType.itemParentId,
+    selectedClusterItemId: selectedType.clusterItemId,
+    clusterItems: clusterContent.clusterItems
   };
 };
 

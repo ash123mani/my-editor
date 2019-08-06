@@ -1,26 +1,39 @@
 import React from 'react';
-import {
-  Editor,
-  EditorState,
-  convertToRaw,
-  getDefaultKeyBinding,
-  ContentState,
-} from 'draft-js';
+import { Editor, EditorState, convertToRaw, getDefaultKeyBinding, ContentState, convertFromRaw } from 'draft-js';
 
+import editorData from '../../../utils/editorData';
 import editorUtils from '../../../utils/editorUtlis';
-
 
 class ContentHeading extends React.Component {
   constructor(props) {
     super(props);
     const contentState = ContentState.createFromText('Title');
     this.state = {
-      editorStateOne: editorUtils.moveSelectionToEnd(EditorState.createWithContent(contentState))
+      editorStateOne: editorUtils.moveSelectionToEnd(EditorState.createWithContent(contentState)),
+      selectedClusterId: null
     };
   }
 
   componentDidMount() {
     this.focus();
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.selectedClusterItemId !== state.selectedClusterItemId && props.selectedClusterItemId) {
+      const rawStateTitle = editorData.getArticleData('title', props.clusterItems, props.selectedClusterItemId);
+
+      const contentState = convertFromRaw(rawStateTitle[0].title);
+      console.log('contentState', contentState);
+
+      const eState = editorUtils.moveSelectionToEnd(EditorState.createWithContent(contentState));
+      console.log('estet', eState);
+      return {
+        editorStateOne: eState,
+        selectedClusterId: props.selectedClusterId
+      };
+    } else {
+      return null;
+    }
   }
 
   onChangeHeading = editorState => {

@@ -12,7 +12,7 @@ const mapStateToProps = state => {
     itemType: createItem.selectedItem,
     clusterItems: clusterContent.clusterItems,
     selectedStuffId: selectedType.itemParentId,
-    selectedClusterIds: selectedType.selectedClusters
+    selectedClusterIds: selectedType.selectedClusters,
   };
 };
 

@@ -1,8 +1,8 @@
 export default {
   getArticleData: (section, data, clusterItemId) => {
-    data.map(item => {
+    return data.filter(item => {
       if (item.itemId === clusterItemId) {
-        return section === 'title' ? item.title : item.content; 
+        return section === 'title' ? item.title : item.content;
       }
     });
   }

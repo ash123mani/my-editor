@@ -25,6 +25,7 @@ class TOCCard extends React.Component {
   };
 
   onClusterItemClick = (clusterItemId, event) => {
+    this.props.itemToCreate('showClusterItem');
     this.props.setSelectedClusterItemId(clusterItemId);
   };
 

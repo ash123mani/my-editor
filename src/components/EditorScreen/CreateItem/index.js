@@ -43,17 +43,22 @@ class CreateItem extends React.Component {
       setIndependentItemContent,
       itemToCreate,
       selectedItem,
+      selectedClusterItemId,
+      clusterItems
     } = this.props;
     const { size } = this.state;
 
     return (
       <div className='create-item'>
-        {this.props.selectedItem !== 'cluster' ? (
+        {selectedItem !== 'cluster' ? (
           <React.Fragment>
             <ContentHeading
               heading='item'
               onConetntEditorFocus={this.onConetntEditorFocus}
               setIndependentItemHeading={setIndependentItemHeading}
+              selectedItem={selectedItem}
+              selectedClusterItemId={selectedClusterItemId}
+              clusterItems={Object.values(clusterItems)}
             />
             <ContentEditor
               isContentEditorFocused={this.state.contentEditorFocused}
