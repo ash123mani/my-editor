@@ -1,17 +1,16 @@
-import React from "react";
-import { convertToRaw, EditorState, convertFromRaw } from "draft-js";
-import Editor, { createEditorStateWithText } from "draft-js-plugins-editor";
-import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin";
-import "draft-js-inline-toolbar-plugin/lib/plugin.css";
+import React from 'react';
+import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
+import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
+import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
+import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 
-import editorData from "../../../utils/editorData";
+import editorData from '../../../utils/editorData';
 
 const inlineToolbarPlugin = createInlineToolbarPlugin();
 const { InlineToolbar } = inlineToolbarPlugin;
 const plugins = [inlineToolbarPlugin];
 
-const text =
-  "In this editor a toolbar shows up once you select part of the text …";
+const text = 'In this editor a toolbar shows up once you select part of the text …';
 
 class ContentEditor extends React.Component {
   // state = {
@@ -20,43 +19,33 @@ class ContentEditor extends React.Component {
   // };
 
   componentDidUpdate(prevProps) {
-    if (
-      this.props.isContentEditorFocused !== prevProps.isContentEditorFocused
-    ) {
+    if (this.props.isContentEditorFocused !== prevProps.isContentEditorFocused) {
       this.editorContent.focus();
       EditorState.moveFocusToEnd(this.state.editorStateTwo);
     }
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (
-      props.selectedClusterItemId !== state.selectedClusterItemId &&
-      props.selectedItem === "showClusterItem"
-    ) {
-      const rawStateTitle = editorData.getArticleData(
-        "content",
-        props.clusterItems,
-        props.selectedClusterItemId
-      );
+    if (props.selectedClusterItemId !== state.selectedClusterItemId && props.selectedItem === 'showClusterItem') {
+      const rawStateTitle = editorData.getArticleData('content', props.clusterItems, props.selectedClusterItemId);
       const contentState = convertFromRaw(rawStateTitle[0].content);
 
       const eState = EditorState.createWithContent(contentState);
       return {
         editorStateTwo: eState,
-        selectedClusterId: null
+        selectedClusterId: null,
       };
     } else {
       return {
         editorStateTwo: createEditorStateWithText(text),
-        selectedClusterId: null
+        selectedClusterId: null,
       };
-      ßß;
     }
   }
 
   onChangeTwo = editorState => {
     this.setState({
-      editorStateTwo: editorState
+      editorStateTwo: editorState,
     });
 
     const contentState = this.state.editorStateTwo.getCurrentContent();

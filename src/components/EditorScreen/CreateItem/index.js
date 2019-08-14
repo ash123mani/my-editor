@@ -1,13 +1,13 @@
-import React from "react";
-import { Button } from "antd";
+import React from 'react';
+import { Button } from 'antd';
 
-import ContentHeading from "../ContentHeading";
-import ContentEditor from "../ContentEditor";
+import ContentHeading from '../ContentHeading';
+import ContentEditor from '../ContentEditor';
 
 class CreateItem extends React.PureComponent {
   state = {
     contentEditorFocused: false,
-    size: "large"
+    size: 'large',
   };
 
   onConetntEditorFocus = () => {
@@ -17,23 +17,23 @@ class CreateItem extends React.PureComponent {
   onSubmitItem = () => {
     const data = {
       title: this.props.currentItemHeading,
-      content: this.props.currentItemContent
+      content: this.props.currentItemContent,
     };
 
-    if (this.props.selectedItem === "item") {
+    if (this.props.selectedItem === 'item') {
       this.props.createItemContent(data);
     } else {
       const clusterItemData = {
         parentId: this.props.selectedTypeId,
         data: {
           title: this.props.currentItemHeading,
-          content: this.props.currentItemContent
-        }
+          content: this.props.currentItemContent,
+        },
       };
       this.props.setClusterItem(clusterItemData);
     }
 
-    this.props.itemToCreate("");
+    this.props.itemToCreate('');
   };
 
   render() {
@@ -45,13 +45,13 @@ class CreateItem extends React.PureComponent {
       selectedItem,
       selectedClusterItemId,
       clusterItems,
-      selectedTypeId
+      selectedTypeId,
     } = this.props;
     const { size } = this.state;
 
     return (
       <div className="create-item">
-        {selectedItem !== "cluster" ? (
+        {selectedItem !== 'cluster' ? (
           <React.Fragment>
             <ContentHeading
               heading="item"
@@ -78,11 +78,7 @@ class CreateItem extends React.PureComponent {
             </div>
           </React.Fragment>
         ) : (
-          <ContentHeading
-            heading="cluster"
-            setTitle={setClusterTitle}
-            itemToCreate={itemToCreate}
-          />
+          <ContentHeading heading="cluster" setTitle={setClusterTitle} itemToCreate={itemToCreate} />
         )}
       </div>
     );

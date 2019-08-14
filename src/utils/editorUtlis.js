@@ -24,7 +24,7 @@ export default {
       anchorKey: key,
       anchorOffset: length,
       focusKey: key,
-      focusOffset: length
+      focusOffset: length,
     });
     return EditorState.forceSelection(editorState, selection);
   },
@@ -33,5 +33,5 @@ export default {
     var contentState = ContentState.createFromBlockArray(convertFromRaw(rawData));
     var editorState = EditorState.createWithContent(contentState);
     return editorState;
-  }
+  },
 };

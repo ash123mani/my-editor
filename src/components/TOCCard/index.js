@@ -1,6 +1,6 @@
-import React from "react";
-import "antd/dist/antd.css";
-import { List, Icon, Menu, Dropdown, Popover } from "antd";
+import React from 'react';
+import 'antd/dist/antd.css';
+import { List, Icon, Menu, Dropdown, Popover } from 'antd';
 
 const menu = (
   <Menu>
@@ -12,11 +12,11 @@ const menu = (
 
 class TOCCard extends React.Component {
   state = {
-    isItemClicked: false
+    isItemClicked: false,
   };
 
   createClusterItem = event => {
-    this.props.itemToCreate("clusterItem");
+    this.props.itemToCreate('clusterItem');
     this.props.setSelectedId(event.target.id);
   };
 
@@ -25,7 +25,7 @@ class TOCCard extends React.Component {
   };
 
   onClusterItemClick = (clusterItemId, event) => {
-    this.props.itemToCreate("showClusterItem");
+    this.props.itemToCreate('showClusterItem');
     this.props.setSelectedClusterItemId(clusterItemId);
   };
 
@@ -43,14 +43,9 @@ class TOCCard extends React.Component {
                   renderItem={item => (
                     <div
                       className="cluster-item-title"
-                      onClick={this.onClusterItemClick.bind(
-                        this,
-                        clusterItem.itemId
-                      )}
+                      onClick={this.onClusterItemClick.bind(this, clusterItem.itemId)}
                     >
-                      <List.Item.Meta
-                        description={`${clusterItem.title.blocks[0].text}`}
-                      />
+                      <List.Item.Meta description={`${clusterItem.title.blocks[0].text}`} />
                     </div>
                   )}
                 />
@@ -75,23 +70,15 @@ class TOCCard extends React.Component {
           dataSource={data}
           renderItem={item => (
             <List.Item>
-              {item.type === "cluster" ? (
-                <Icon type="copyright" />
-              ) : (
-                <Icon type="info-circle" />
-              )}
+              {item.type === 'cluster' ? <Icon type="copyright" /> : <Icon type="info-circle" />}
 
               <div onClick={this.itemClicked.bind(this, item.id)}>
                 <List.Item.Meta description={`${item.title.blocks[0].text}`} />
               </div>
 
-              {item.type === "cluster" ? (
+              {item.type === 'cluster' ? (
                 <Popover placement="top" content="Create Item">
-                  <div
-                    onClick={this.createClusterItem}
-                    id={item.id}
-                    className="circle"
-                  />
+                  <div onClick={this.createClusterItem} id={item.id} className="circle" />
                 </Popover>
               ) : (
                 <Icon type="like" />
@@ -101,9 +88,7 @@ class TOCCard extends React.Component {
                 <Icon type="more" />
               </Dropdown>
 
-              {selectedClusterIds && selectedClusterIds.includes(item.id)
-                ? this.renderItemClusters(item)
-                : null}
+              {selectedClusterIds && selectedClusterIds.includes(item.id) ? this.renderItemClusters(item) : null}
             </List.Item>
           )}
         />

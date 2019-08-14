@@ -4,7 +4,7 @@ import ContentScreen from './ContentScreen/index';
 
 const EditorScreenWrapper = () => {
   return (
-    <div className='editor-screen'>
+    <div className="editor-screen">
       <TOCScreen />
       <ContentScreen />
     </div>

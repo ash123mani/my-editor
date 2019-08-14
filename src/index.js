@@ -18,15 +18,15 @@ const store = createStore(
           undefined: true,
           function: function(fn) {
             return fn.toString();
-          }
-        }
-      }
-    })
+          },
+        },
+      },
+    }),
 );
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

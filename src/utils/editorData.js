@@ -5,5 +5,5 @@ export default {
         return section === 'title' ? item.title : item.content;
       }
     });
-  }
+  },
 };

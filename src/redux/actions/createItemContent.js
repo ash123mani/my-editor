@@ -12,8 +12,8 @@ export const createItemContent = itemData => {
         title: itemData.title,
         content: itemData.content,
         id: itemId,
-        type: 'item'
-      }
-    }
+        type: 'item',
+      },
+    },
   };
 };

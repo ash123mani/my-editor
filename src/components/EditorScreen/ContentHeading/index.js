@@ -1,27 +1,18 @@
-import React from "react";
-import {
-  Editor,
-  EditorState,
-  convertToRaw,
-  getDefaultKeyBinding,
-  ContentState,
-  convertFromRaw
-} from "draft-js";
+import React from 'react';
+import { Editor, EditorState, convertToRaw, getDefaultKeyBinding, ContentState, convertFromRaw } from 'draft-js';
 
-import editorData from "../../../utils/editorData";
-import editorUtils from "../../../utils/editorUtlis";
+import editorData from '../../../utils/editorData';
+import editorUtils from '../../../utils/editorUtlis';
 
-const contentState = ContentState.createFromText("Title");
+const contentState = ContentState.createFromText('Title');
 
 class ContentHeading extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      editorStateOne: editorUtils.moveSelectionToEnd(
-        EditorState.createWithContent(contentState)
-      ),
+      editorStateOne: editorUtils.moveSelectionToEnd(EditorState.createWithContent(contentState)),
       selectedClusterId: null,
-      parentItemId: null
+      parentItemId: null,
     };
   }
 
@@ -35,65 +26,61 @@ class ContentHeading extends React.PureComponent {
     if (
       props.selectedClusterItemId !== state.selectedClusterItemId &&
       props.selectedClusterItemId &&
-      props.selectedItem !== "clusterItem"
+      props.selectedItem !== 'clusterItem'
     ) {
-      console.log("first");
-      const rawStateTitle = editorData.getArticleData(
-        "title",
-        props.clusterItems,
-        props.selectedClusterItemId
-      );
+      console.log('first');
+      const rawStateTitle = editorData.getArticleData('title', props.clusterItems, props.selectedClusterItemId);
 
       const contentState = convertFromRaw(rawStateTitle[0].title);
-      console.log("contentState", contentState);
+      console.log('contentState', contentState);
 
       const eState = EditorState.createWithContent(contentState);
       return {
         editorStateOne: eState,
-        selectedClusterId: props.selectedClusterId
+        selectedClusterId: props.selectedClusterId,
       };
     } else {
-      console.log("last");
+      console.log('last');
       return null;
     }
   }
 
   onChangeHeading = editorState => {
     this.setState({
-      editorStateOne: editorState
+      editorStateOne: editorState,
     });
     const contentState = this.state.editorStateOne.getCurrentContent();
     const rawState = convertToRaw(contentState);
 
-    if (this.props.heading === "item") {
+    if (this.props.heading === 'item') {
       this.props.setIndependentItemHeading(rawState);
     }
   };
 
   keyBindingFn = e => {
     if (e.keyCode === 13) {
-      return "enter-pressed";
+      return 'enter-pressed';
     }
     return getDefaultKeyBinding(e);
   };
 
   handleKeyCommand = command => {
-    if (command === "enter-pressed") {
+    if (command === 'enter-pressed') {
       const contentState = this.state.editorStateOne.getCurrentContent();
       const rawState = convertToRaw(contentState);
 
-      if (this.props.heading === "cluster") {
+      if (this.props.heading === 'cluster') {
         this.props.setTitle(rawState);
-        this.props.itemToCreate("");
+        this.props.itemToCreate('');
       }
 
-      if (this.props.heading === "item") {
+      if (this.props.heading === 'item') {
         this.props.onConetntEditorFocus();
       }
 
-      return "handled";
+      return 'handled';
     }
-    return "not-handled";
+    return 'not-handled';
   };
 
   focus = () => {

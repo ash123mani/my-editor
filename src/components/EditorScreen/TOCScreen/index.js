@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import TOCCard from "../../TOCCard";
-import TOCHeader from "../../TOCHeader";
+import TOCCard from '../../TOCCard';
+import TOCHeader from '../../TOCHeader';
 
 class TOCScreen extends React.Component {
   render() {
@@ -15,7 +15,7 @@ class TOCScreen extends React.Component {
       selectedStuffId,
       setSelectedClusterId,
       selectedClusterIds,
-      setSelectedClusterItemId
+      setSelectedClusterItemId,
     } = this.props;
 
     return (

@@ -21,14 +21,14 @@ class ContentScreen extends React.PureComponent {
       setClusterItem,
       selectedTypeId,
       selectedClusterItemId,
-      clusterItems
+      clusterItems,
     } = this.props;
 
     return (
-      <div className='content-screen'>
-        <div className='content-screen__wrapper'>
+      <div className="content-screen">
+        <div className="content-screen__wrapper">
           {!selectedItem ? (
-            <div className='content-screen--empty'>
+            <div className="content-screen--empty">
               <h1>Select an item or cluster</h1>
             </div>
           ) : (
@@ -60,7 +60,7 @@ const mapDispatchToProps = dispatch => {
     setIndependentItemContent: data => dispatch(setIndependentItemContent(data)),
     createItemContent: data => dispatch(createItemContent(data)),
     itemToCreate: itemType => dispatch(itemToCreate(itemType)),
-    setClusterItem: clusterItemData => dispatch(setClusterItem(clusterItemData))
+    setClusterItem: clusterItemData => dispatch(setClusterItem(clusterItemData)),
   };
 };
 
@@ -72,11 +72,11 @@ const mapStateToProps = state => {
     currentItemHeading: independentItem.currentHeading,
     selectedTypeId: selectedType.itemParentId,
     selectedClusterItemId: selectedType.clusterItemId,
-    clusterItems: clusterContent.clusterItems
+    clusterItems: clusterContent.clusterItems,
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ContentScreen);

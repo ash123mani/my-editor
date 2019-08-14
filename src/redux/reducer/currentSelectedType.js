@@ -3,7 +3,7 @@ import { SET_SELECTED_ID, SELECTED_CLUSTER_ID, SET_SELECTED_CLUSTER_ITEM_ID } fr
 const initialState = {
   itemParentId: null,
   selectedClusters: [],
-  clusterItemId: null
+  clusterItemId: null,
 };
 
 export const selectedType = (state = initialState, action) => {

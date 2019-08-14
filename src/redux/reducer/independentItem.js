@@ -3,17 +3,16 @@ import { INDEPENDENT_ITEM_HEADING, INDEPENDENT_ITEM_CONTENT } from '../actions/t
 const initialState = {};
 
 export const independentItem = (state = initialState, action) => {
-
   switch (action.type) {
     case INDEPENDENT_ITEM_HEADING:
       return {
         ...state,
-        currentHeading: { ...state.currentHeading, ...action.payload }
+        currentHeading: { ...state.currentHeading, ...action.payload },
       };
     case INDEPENDENT_ITEM_CONTENT:
       return {
         ...state,
-        currentContent: { ...state.currentContent, ...action.payload }
+        currentContent: { ...state.currentContent, ...action.payload },
       };
     default:
       return state;

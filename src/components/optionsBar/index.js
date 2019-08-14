@@ -1,22 +1,22 @@
-import React from "react";
-import { Icon } from "antd";
+import React from 'react';
+import { Icon } from 'antd';
 
 class OptionsBar extends React.Component {
-  tabOptions = ["All", "Recent", "Board", "Graph"];
+  tabOptions = ['All', 'Recent', 'Board', 'Graph'];
 
   onClick = e => {
     this.props.setTab(e.target.id);
   };
 
   options = tab => {
-    const classes = ["options-bar__contents-item"];
+    const classes = ['options-bar__contents-item'];
 
     if (this.props.selectedTab === tab) {
-      classes.push("options-bar__contents-item--selected");
+      classes.push('options-bar__contents-item--selected');
     }
 
     return (
-      <div key={tab} className={classes.join(" ")}>
+      <div key={tab} className={classes.join(' ')}>
         <div id={tab} onClick={this.onClick}>
           {tab}
         </div>

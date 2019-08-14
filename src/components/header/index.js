@@ -1,5 +1,5 @@
-import React from "react";
-import { Icon, Popover } from "antd";
+import React from 'react';
+import { Icon, Popover } from 'antd';
 
 const Header = () => {
   return (
@@ -34,21 +34,21 @@ const Header = () => {
           <span>Upgrade</span>
         </div>
 
-        <Popover content={"Help"} trigger="hover" mouseEnterDelay={0.7}>
+        <Popover content={'Help'} trigger="hover" mouseEnterDelay={0.7}>
           <div className="header__suggestions-help">
             <Icon type="question-circle" />
             <span />
           </div>
         </Popover>
 
-        <Popover content={"Notification"} trigger="hover" mouseEnterDelay={0.7}>
+        <Popover content={'Notification'} trigger="hover" mouseEnterDelay={0.7}>
           <div className="header__suggestions-notification">
             <Icon type="bell" />
             <span />
           </div>
         </Popover>
 
-        <Popover content={"Account"} trigger="hover" mouseEnterDelay={0.7}>
+        <Popover content={'Account'} trigger="hover" mouseEnterDelay={0.7}>
           <div className="header__suggestions-user">AT</div>
         </Popover>
       </div>
