@@ -1,6 +1,6 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import { List, Icon, Menu, Dropdown, Popover } from 'antd';
+import React from "react";
+import "antd/dist/antd.css";
+import { List, Icon, Menu, Dropdown, Popover } from "antd";
 
 const menu = (
   <Menu>
@@ -16,7 +16,7 @@ class TOCCard extends React.Component {
   };
 
   createClusterItem = event => {
-    this.props.itemToCreate('clusterItem');
+    this.props.itemToCreate("clusterItem");
     this.props.setSelectedId(event.target.id);
   };
 
@@ -25,27 +25,32 @@ class TOCCard extends React.Component {
   };
 
   onClusterItemClick = (clusterItemId, event) => {
-    this.props.itemToCreate('showClusterItem');
+    this.props.itemToCreate("showClusterItem");
     this.props.setSelectedClusterItemId(clusterItemId);
   };
 
   renderItemClusters = item => {
     return (
-      <div className='cluster-item'>
+      <div className="cluster-item">
         {this.props.clusterItems.map(clusterItem => {
           if (clusterItem.parentId === item.id) {
             const data = [clusterItem.title.blocks[0].text];
             return (
               <React.Fragment key={clusterItem.itemId}>
                 <List
-                  itemLayout='horizontal'
+                  itemLayout="horizontal"
                   dataSource={data}
                   renderItem={item => (
                     <div
-                      className='cluster-item-title'
-                      onClick={this.onClusterItemClick.bind(this, clusterItem.itemId)}
+                      className="cluster-item-title"
+                      onClick={this.onClusterItemClick.bind(
+                        this,
+                        clusterItem.itemId
+                      )}
                     >
-                      <List.Item.Meta description={`${clusterItem.title.blocks[0].text}`} />
+                      <List.Item.Meta
+                        description={`${clusterItem.title.blocks[0].text}`}
+                      />
                     </div>
                   )}
                 />
@@ -64,31 +69,41 @@ class TOCCard extends React.Component {
     const data = [...clusters, ...items];
 
     return (
-      <div className='toc-card'>
+      <div className="toc-card">
         <List
-          itemLayout='horizontal'
+          itemLayout="horizontal"
           dataSource={data}
           renderItem={item => (
             <List.Item>
-              {item.type === 'cluster' ? <Icon type='copyright' /> : <Icon type='info-circle' />}
+              {item.type === "cluster" ? (
+                <Icon type="copyright" />
+              ) : (
+                <Icon type="info-circle" />
+              )}
 
               <div onClick={this.itemClicked.bind(this, item.id)}>
                 <List.Item.Meta description={`${item.title.blocks[0].text}`} />
               </div>
 
-              {item.type === 'cluster' ? (
-                <Popover placement='top' content='Create Item'>
-                  <div onClick={this.createClusterItem} id={item.id} className='circle' />
+              {item.type === "cluster" ? (
+                <Popover placement="top" content="Create Item">
+                  <div
+                    onClick={this.createClusterItem}
+                    id={item.id}
+                    className="circle"
+                  />
                 </Popover>
               ) : (
-                <Icon type='like' />
+                <Icon type="like" />
               )}
 
               <Dropdown overlay={menu}>
-                <Icon type='more' />
+                <Icon type="more" />
               </Dropdown>
 
-              {selectedClusterIds && selectedClusterIds.includes(item.id) ? this.renderItemClusters(item) : null}
+              {selectedClusterIds && selectedClusterIds.includes(item.id)
+                ? this.renderItemClusters(item)
+                : null}
             </List.Item>
           )}
         />

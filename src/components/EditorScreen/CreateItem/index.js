@@ -1,13 +1,13 @@
-import React from 'react';
-import { Button } from 'antd';
+import React from "react";
+import { Button } from "antd";
 
-import ContentHeading from '../ContentHeading';
-import ContentEditor from '../ContentEditor';
+import ContentHeading from "../ContentHeading";
+import ContentEditor from "../ContentEditor";
 
-class CreateItem extends React.Component {
+class CreateItem extends React.PureComponent {
   state = {
     contentEditorFocused: false,
-    size: 'large'
+    size: "large"
   };
 
   onConetntEditorFocus = () => {
@@ -20,7 +20,7 @@ class CreateItem extends React.Component {
       content: this.props.currentItemContent
     };
 
-    if (this.props.selectedItem === 'item') {
+    if (this.props.selectedItem === "item") {
       this.props.createItemContent(data);
     } else {
       const clusterItemData = {
@@ -33,7 +33,7 @@ class CreateItem extends React.Component {
       this.props.setClusterItem(clusterItemData);
     }
 
-    this.props.itemToCreate('');
+    this.props.itemToCreate("");
   };
 
   render() {
@@ -44,36 +44,45 @@ class CreateItem extends React.Component {
       itemToCreate,
       selectedItem,
       selectedClusterItemId,
-      clusterItems
+      clusterItems,
+      selectedTypeId
     } = this.props;
     const { size } = this.state;
 
     return (
-      <div className='create-item'>
-        {selectedItem !== 'cluster' ? (
+      <div className="create-item">
+        {selectedItem !== "cluster" ? (
           <React.Fragment>
             <ContentHeading
-              heading='item'
+              heading="item"
               onConetntEditorFocus={this.onConetntEditorFocus}
               setIndependentItemHeading={setIndependentItemHeading}
               selectedItem={selectedItem}
               selectedClusterItemId={selectedClusterItemId}
               clusterItems={Object.values(clusterItems)}
+              selectedTypeId={selectedTypeId}
             />
             <ContentEditor
               isContentEditorFocused={this.state.contentEditorFocused}
               onConetntEditorFocus={this.onConetntEditorFocus}
               setIndependentItemContent={setIndependentItemContent}
               selectedItem={selectedItem}
+              selectedClusterItemId={selectedClusterItemId}
+              clusterItems={Object.values(clusterItems)}
+              selectedTypeId={selectedTypeId}
             />
-            <div className='create-item__submit-button'>
-              <Button type='dashed' size={size} onClick={this.onSubmitItem}>
+            <div className="create-item__submit-button">
+              <Button type="dashed" size={size} onClick={this.onSubmitItem}>
                 Save It
               </Button>
             </div>
           </React.Fragment>
         ) : (
-          <ContentHeading heading='cluster' setTitle={setClusterTitle} itemToCreate={itemToCreate} />
+          <ContentHeading
+            heading="cluster"
+            setTitle={setClusterTitle}
+            itemToCreate={itemToCreate}
+          />
         )}
       </div>
     );

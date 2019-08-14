@@ -7,7 +7,7 @@ import { setIndependentItemHeading, setIndependentItemContent } from '../../../r
 import { createItemContent } from '../../../redux/actions/createItemContent';
 import { itemToCreate } from '../../../redux/actions/createItemActions';
 
-class ContentScreen extends React.Component {
+class ContentScreen extends React.PureComponent {
   render() {
     const {
       selectedItem,

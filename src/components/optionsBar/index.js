@@ -26,16 +26,16 @@ class OptionsBar extends React.Component {
 
   render() {
     return (
-      <div className='options-bar'>
-        <div className='options-bar__items-option'>
+      <div className="options-bar">
+        <div className="options-bar__items-option">
           <span>Items</span>
 
           <div>
-            <Icon type='right' />
+            <Icon type="right" />
           </div>
         </div>
 
-        <div className='options-bar__contents'>
+        <div className="options-bar__contents">
           {this.tabOptions.map(tab => {
             return this.options(tab);
           })}
