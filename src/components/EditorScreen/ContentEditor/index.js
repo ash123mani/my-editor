@@ -31,7 +31,7 @@ class ContentEditor extends React.Component {
 
       const eState = EditorState.createWithContent(contentState);
       return {
-        editorStateTwo: null,
+        editorStateTwo: eState,
         selectedClusterId: props.selectedClusterItemId,
       };
     }
