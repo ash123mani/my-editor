@@ -5,17 +5,17 @@ import { setTab } from './../../redux/actions/setTabActions';
 
 const mapStateToProps = state => {
   return {
-    selectedTab: state.selectedTab.selectedTab
+    selectedTab: state.selectedTab.selectedTab,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    setTab: tab => dispatch(setTab(tab))
+    setTab: tab => dispatch(setTab(tab)),
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(OptionsBar);

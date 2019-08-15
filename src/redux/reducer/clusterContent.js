@@ -1,8 +1,8 @@
-import { NEW_CLUSTER_TITLE, NEW_CLUSTER_ITEM } from '../actions/types';
+import { NEW_CLUSTER_TITLE, NEW_CLUSTER_ITEM, DELETE_CLUSTER } from '../actions/types';
 
 const initialState = {
   clusters: {},
-  clusterItems: {}
+  clusterItems: {},
 };
 
 export const clusterContent = (state = initialState, action) => {
@@ -14,16 +14,26 @@ export const clusterContent = (state = initialState, action) => {
         ...state,
         clusters: {
           ...state.clusters,
-          ...{ [clusterId]: action.payload }
-        }
+          ...{ [clusterId]: action.payload },
+        },
       };
     case NEW_CLUSTER_ITEM:
       return {
         ...state,
         clusterItems: {
           ...state.clusterItems,
-          ...{ [action.payload.itemId]: action.payload.clusterItemData }
-        }
+          ...{ [action.payload.itemId]: action.payload.clusterItemData },
+        },
+      };
+    case DELETE_CLUSTER:
+      return {
+        ...state,
+        clusters: {
+          ...Object.values(state.clusters).filter(cluster => cluster.id !== action.payload),
+        },
+        clusterItems: {
+          ...Object.values(state.clusterItems).filter(clusterItem => clusterItem.parentId !== action.payload),
+        },
       };
     default:
       return state;

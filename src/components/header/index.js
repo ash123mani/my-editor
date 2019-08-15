@@ -1,55 +1,55 @@
-import React from "react";
-import { Icon, Popover } from "antd";
+import React from 'react';
+import { Icon, Popover } from 'antd';
 
 const Header = () => {
   return (
-    <div className='header'>
-      <div className='header__menu-fold'>
-        <Icon type='menu-fold' />
+    <div className="header">
+      <div className="header__menu-fold">
+        <Icon type="menu-fold" />
       </div>
 
-      <div className='header__icon'>
-        <Icon type='desktop' />
+      <div className="header__icon">
+        <Icon type="desktop" />
         <span>My Editor</span>
       </div>
 
-      <div className='header__search'>
-        <div className='header__search-icon'>
-          <Icon type='search' />
+      <div className="header__search">
+        <div className="header__search-icon">
+          <Icon type="search" />
         </div>
 
-        <div className='header__search-input'>
-          <input type='search' placeholder='Workspace' />
+        <div className="header__search-input">
+          <input type="search" placeholder="Workspace" />
         </div>
       </div>
 
-      <div className='header__suggestions'>
+      <div className="header__suggestions">
         <div>
-          <Icon type='user-add' />
+          <Icon type="user-add" />
           <span>Invite People</span>
         </div>
 
-        <div className='header__suggestions-star-icon'>
-          <Icon type='star' />
+        <div className="header__suggestions-star-icon">
+          <Icon type="star" />
           <span>Upgrade</span>
         </div>
 
-        <Popover content={"Help"} trigger='hover' mouseEnterDelay={0.7}>
-          <div className='header__suggestions-help'>
-            <Icon type='question-circle' />
+        <Popover content={'Help'} trigger="hover" mouseEnterDelay={0.7}>
+          <div className="header__suggestions-help">
+            <Icon type="question-circle" />
             <span />
           </div>
         </Popover>
 
-        <Popover content={"Notification"} trigger='hover' mouseEnterDelay={0.7}>
-          <div className='header__suggestions-notification'>
-            <Icon type='bell' />
+        <Popover content={'Notification'} trigger="hover" mouseEnterDelay={0.7}>
+          <div className="header__suggestions-notification">
+            <Icon type="bell" />
             <span />
           </div>
         </Popover>
 
-        <Popover content={"Account"} trigger='hover' mouseEnterDelay={0.7}>
-          <div className='header__suggestions-user'>AT</div>
+        <Popover content={'Account'} trigger="hover" mouseEnterDelay={0.7}>
+          <div className="header__suggestions-user">AT</div>
         </Popover>
       </div>
     </div>

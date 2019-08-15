@@ -1,12 +1,8 @@
 .toc-card {
-  // display: grid;
-  // /* justify-content: center; */
-  // grid-template-columns: 0.5fr 3fr 0.2fr 0.5fr;
   cursor: pointer;
 
   .ant-list-item {
     display: grid;
-    /* justify-content: center; */
     grid-template-columns: 0.5fr 3fr 0.2fr 0.5fr;
   }
 
@@ -38,6 +34,20 @@
     &-title:nth-last-of-type() {
       border-bottom: none;
     }
+  }
+
+  .ant-list-item-meta-description {
+    font-weight: 500;
+    color: #252020c4;
+  }
+
+  .ant-list-item {
+    box-shadow: 1px 1px 1px 1px #efdcdc;
+  }
+
+  .ant-list-item:hover {
+    box-shadow: 1px 1px 1px 1px #d4bcbc;
+    // box-shadow: none;
   }
 }
 

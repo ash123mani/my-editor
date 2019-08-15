@@ -24,14 +24,14 @@ export default {
       anchorKey: key,
       anchorOffset: length,
       focusKey: key,
-      focusOffset: length
+      focusOffset: length,
     });
     return EditorState.forceSelection(editorState, selection);
   },
 
   editorStateFromRawData: rawData => {
-    const contentState = ContentState.createFromBlockArray(convertFromRaw(rawData));
-    const editorState = EditorState.createWithContent(contentState);
+    var contentState = ContentState.createFromBlockArray(convertFromRaw(rawData));
+    var editorState = EditorState.createWithContent(contentState);
     return editorState;
-  }
+  },
 };

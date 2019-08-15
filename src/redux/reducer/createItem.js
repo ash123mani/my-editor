@@ -1,7 +1,7 @@
-import { ITEM_TO_CREATE } from "../actions/types";
+import { ITEM_TO_CREATE } from '../actions/types';
 
 let initialState = {
-  selectedItem: null
+  selectedItem: null,
 };
 
 export const createItem = (state = initialState, action) => {
@@ -9,7 +9,7 @@ export const createItem = (state = initialState, action) => {
     case ITEM_TO_CREATE:
       return {
         ...state,
-        selectedItem: action.payload
+        selectedItem: action.payload,
       };
     default:
       return state;

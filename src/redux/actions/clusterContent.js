@@ -1,5 +1,5 @@
 import uuidv1 from 'uuid/v1';
-import { NEW_CLUSTER_TITLE, NEW_CLUSTER_ITEM } from './types';
+import { NEW_CLUSTER_TITLE, NEW_CLUSTER_ITEM, DELETE_CLUSTER } from './types';
 
 export const setClusterTitle = title => {
   return {
@@ -7,8 +7,8 @@ export const setClusterTitle = title => {
     payload: {
       title: title,
       id: uuidv1(),
-      type: 'cluster'
-    }
+      type: 'cluster',
+    },
   };
 };
 
@@ -24,8 +24,15 @@ export const setClusterItem = payload => {
         content: payload.data.content,
         parentId: payload.parentId,
         itemId,
-        type: 'clusterItem'
-      }
-    }
+        type: 'clusterItem',
+      },
+    },
+  };
+};
+
+export const deleteCluster = clusterId => {
+  return {
+    type: DELETE_CLUSTER,
+    payload: clusterId,
   };
 };

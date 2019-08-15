@@ -12,5 +12,5 @@ export default combineReducers({
   clusterContent,
   independentItem,
   itemContent,
-  selectedType
+  selectedType,
 });

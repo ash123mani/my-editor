@@ -1,7 +1,7 @@
 import { CREATE_INDEPENDENT_ITEM } from '../actions/types';
 
 const initialState = {
-  items: {}
+  items: {},
 };
 
 export const itemContent = (state = initialState, action) => {
@@ -12,8 +12,8 @@ export const itemContent = (state = initialState, action) => {
         ...state,
         items: {
           ...state.items,
-          ...{ [itemId]: action.payload.item }
-        }
+          ...{ [itemId]: action.payload.item },
+        },
       };
     default:
       return state;

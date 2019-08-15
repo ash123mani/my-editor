@@ -1,7 +1,7 @@
-import { SELECTED_TAB } from "../actions/types";
+import { SELECTED_TAB } from '../actions/types';
 
 const initialState = {
-  selectedTab: "All"
+  selectedTab: 'All',
 };
 
 export const selectedTab = (state = initialState, action) => {
@@ -9,7 +9,7 @@ export const selectedTab = (state = initialState, action) => {
     case SELECTED_TAB:
       return {
         ...state,
-        selectedTab: action.payload
+        selectedTab: action.payload,
       };
     default:
       return state;

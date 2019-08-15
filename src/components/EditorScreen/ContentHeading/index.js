@@ -1,31 +1,60 @@
 import React from 'react';
-import {
-  Editor,
-  EditorState,
-  convertToRaw,
-  getDefaultKeyBinding,
-  ContentState,
-} from 'draft-js';
+import { Editor, EditorState, convertToRaw, getDefaultKeyBinding, ContentState, convertFromRaw } from 'draft-js';
 
+import editorData from '../../../utils/editorData';
 import editorUtils from '../../../utils/editorUtlis';
 
+const contentState = ContentState.createFromText('Title');
 
 class ContentHeading extends React.Component {
   constructor(props) {
     super(props);
-    const contentState = ContentState.createFromText('Title');
     this.state = {
-      editorStateOne: editorUtils.moveSelectionToEnd(EditorState.createWithContent(contentState))
+      editorStateOne: editorUtils.moveSelectionToEnd(EditorState.createWithContent(contentState)),
+      selectedClusterId: null,
+      parentItemId: null,
     };
   }
 
   componentDidMount() {
-    this.focus();
+    if (!this.state.selectedClusterId) {
+      this.focus();
+    }
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.selectedClusterItemId !== state.selectedClusterItemId && props.selectedClusterItemId) {
+      const rawStateTitle = editorData.getArticleData('title', props.clusterItems, props.selectedClusterItemId);
+      const contentState = convertFromRaw(rawStateTitle[0].title);
+      const eState = EditorState.createWithContent(contentState);
+
+      return {
+        editorStateOne: eState,
+        selectedClusterId: props.selectedClusterId,
+      };
+    }
+
+    if (
+      props.selectedIndependentItemId !== state.selectedIndependentItemId &&
+      props.selectedItem === 'independentItem'
+    ) {
+      const rawStateTitle = editorData.getArticleData('title', props.items, props.selectedIndependentItemId);
+      const contentState = convertFromRaw(rawStateTitle[0].title);
+      const eState = EditorState.createWithContent(contentState);
+
+      return {
+        editorStateOne: eState,
+        selectedClusterId: props.selectedClusterId,
+        selectedIndependentItemId: props.selectedIndependentItemIdl,
+      };
+    } else {
+      return null;
+    }
   }
 
   onChangeHeading = editorState => {
     this.setState({
-      editorStateOne: editorState
+      editorStateOne: editorState,
     });
     const contentState = this.state.editorStateOne.getCurrentContent();
     const rawState = convertToRaw(contentState);
@@ -67,9 +96,9 @@ class ContentHeading extends React.Component {
 
   render() {
     return (
-      <div className='create-item__name'>
-        <div className='tag'>
-          <div className='tag-name'>Add Item</div>
+      <div className="create-item__name" key={this.props.selectedClusterItemId || this.props.selectedItem}>
+        <div className="tag">
+          <div className="tag-name">Add Item</div>
         </div>
         <Editor
           onChange={this.onChangeHeading}

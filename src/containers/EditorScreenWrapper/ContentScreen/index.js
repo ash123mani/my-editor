@@ -7,7 +7,7 @@ import { setIndependentItemHeading, setIndependentItemContent } from '../../../r
 import { createItemContent } from '../../../redux/actions/createItemContent';
 import { itemToCreate } from '../../../redux/actions/createItemActions';
 
-class ContentScreen extends React.Component {
+class ContentScreen extends React.PureComponent {
   render() {
     const {
       selectedItem,
@@ -19,14 +19,18 @@ class ContentScreen extends React.Component {
       createItemContent,
       itemToCreate,
       setClusterItem,
-      selectedTypeId
+      selectedTypeId,
+      selectedClusterItemId,
+      clusterItems,
+      selectedIndependentItemId,
+      items,
     } = this.props;
 
     return (
-      <div className='content-screen'>
-        <div className='content-screen__wrapper'>
+      <div className="content-screen">
+        <div className="content-screen__wrapper">
           {!selectedItem ? (
-            <div className='content-screen--empty'>
+            <div className="content-screen--empty">
               <h1>Select an item or cluster</h1>
             </div>
           ) : (
@@ -41,6 +45,10 @@ class ContentScreen extends React.Component {
               itemToCreate={itemToCreate}
               setClusterItem={setClusterItem}
               selectedTypeId={selectedTypeId}
+              selectedClusterItemId={selectedClusterItemId}
+              clusterItems={Object.values(clusterItems)}
+              selectedIndependentItemId={selectedIndependentItemId}
+              items={Object.values(items)}
             />
           )}
         </div>
@@ -56,21 +64,25 @@ const mapDispatchToProps = dispatch => {
     setIndependentItemContent: data => dispatch(setIndependentItemContent(data)),
     createItemContent: data => dispatch(createItemContent(data)),
     itemToCreate: itemType => dispatch(itemToCreate(itemType)),
-    setClusterItem: clusterItemData => dispatch(setClusterItem(clusterItemData))
+    setClusterItem: clusterItemData => dispatch(setClusterItem(clusterItemData)),
   };
 };
 
 const mapStateToProps = state => {
-  const { createItem, independentItem, selectedType } = state;
+  const { createItem, independentItem, selectedType, clusterContent, itemContent } = state;
   return {
     selectedItem: createItem.selectedItem,
     currentItemContent: independentItem.currentContent,
     currentItemHeading: independentItem.currentHeading,
-    selectedTypeId: selectedType.itemParentId
+    selectedTypeId: selectedType.itemParentId,
+    selectedClusterItemId: selectedType.clusterItemId,
+    clusterItems: clusterContent.clusterItems,
+    selectedIndependentItemId: selectedType.selectedIndependentItemId,
+    items: itemContent.items,
   };
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ContentScreen);
