@@ -24,10 +24,12 @@ class TOCHeader extends Component {
 
   onItemOptionsClick = e => {
     this.props.itemToCreate('item');
+    this.props.setSelectedClusterItemId(null);
   };
 
   onClusterOptionsClick = e => {
     this.props.itemToCreate('cluster');
+    this.props.setSelectedClusterItemId(null);
   };
 
   render() {

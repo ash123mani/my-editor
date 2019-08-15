@@ -20,14 +20,24 @@ class TOCCard extends React.Component {
     this.props.setSelectedId(event.target.id);
   };
 
-  itemClicked = (slectedItemId, event) => {
-    this.props.setSelectedClusterId(slectedItemId);
+  itemClicked = (item, event) => {
+    if (item.type === 'cluster') {
+      this.props.setSelectedClusterId(item.id);
+    }
+
+    if (item.type === 'item') {
+      this.props.setSelectedIndependentItemId(item.id);
+      this.props.itemToCreate('independentItem');
+    }
   };
 
   onClusterItemClick = (clusterItemId, event) => {
     this.props.itemToCreate('showClusterItem');
-
     this.props.setSelectedClusterItemId(clusterItemId);
+  };
+
+  onDeleteCluster = clusterId => {
+    this.props.deleteCluster(clusterId);
   };
 
   renderItemClusters = item => {
@@ -61,7 +71,7 @@ class TOCCard extends React.Component {
   };
 
   render() {
-    const { clusters, items, selectedClusterIds } = this.props;
+    const { clusters, items, selectedClusterIds, deleteCluster } = this.props;
     const data = [...clusters, ...items];
 
     return (
@@ -73,7 +83,7 @@ class TOCCard extends React.Component {
             <List.Item>
               {item.type === 'cluster' ? <Icon type="copyright" /> : <Icon type="info-circle" />}
 
-              <div onClick={this.itemClicked.bind(this, item.id)}>
+              <div onClick={this.itemClicked.bind(this, item)}>
                 <List.Item.Meta description={`${item.title.blocks[0].text}`} />
               </div>
 
@@ -85,7 +95,11 @@ class TOCCard extends React.Component {
                 <Icon type="like" />
               )}
 
-              <Popover content={<TOCMore />} placement="right" trigger="click">
+              <Popover
+                content={<TOCMore clusterId={item.id} deleteCluster={this.onDeleteCluster} />}
+                placement="right"
+                trigger="click"
+              >
                 <Icon type="more" />
               </Popover>
 

@@ -24,16 +24,28 @@ class ContentHeading extends React.Component {
 
   static getDerivedStateFromProps(props, state) {
     if (props.selectedClusterItemId !== state.selectedClusterItemId && props.selectedClusterItemId) {
-      console.log('first');
       const rawStateTitle = editorData.getArticleData('title', props.clusterItems, props.selectedClusterItemId);
-
       const contentState = convertFromRaw(rawStateTitle[0].title);
-      console.log('contentState', contentState);
-
       const eState = EditorState.createWithContent(contentState);
+
       return {
         editorStateOne: eState,
         selectedClusterId: props.selectedClusterId,
+      };
+    }
+
+    if (
+      props.selectedIndependentItemId !== state.selectedIndependentItemId &&
+      props.selectedItem === 'independentItem'
+    ) {
+      const rawStateTitle = editorData.getArticleData('title', props.items, props.selectedIndependentItemId);
+      const contentState = convertFromRaw(rawStateTitle[0].title);
+      const eState = EditorState.createWithContent(contentState);
+
+      return {
+        editorStateOne: eState,
+        selectedClusterId: props.selectedClusterId,
+        selectedIndependentItemId: props.selectedIndependentItemIdl,
       };
     } else {
       return null;

@@ -16,12 +16,14 @@ class TOCScreen extends React.Component {
       setSelectedClusterId,
       selectedClusterIds,
       setSelectedClusterItemId,
+      deleteCluster,
+      setSelectedIndependentItemId,
     } = this.props;
 
     return (
       <div className="toc-conatiner">
         <div className="toc-screen">
-          <TOCHeader itemToCreate={itemToCreate} />
+          <TOCHeader itemToCreate={itemToCreate} setSelectedClusterItemId={setSelectedClusterItemId} />
           <TOCCard
             clusters={Object.values(clusters)}
             items={Object.values(items)}
@@ -33,6 +35,8 @@ class TOCScreen extends React.Component {
             setSelectedClusterId={setSelectedClusterId}
             selectedClusterIds={selectedClusterIds}
             setSelectedClusterItemId={setSelectedClusterItemId}
+            deleteCluster={deleteCluster}
+            setSelectedIndependentItemId={setSelectedIndependentItemId}
           />
         </div>
       </div>

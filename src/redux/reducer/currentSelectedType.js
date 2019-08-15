@@ -1,9 +1,15 @@
-import { SET_SELECTED_ID, SELECTED_CLUSTER_ID, SET_SELECTED_CLUSTER_ITEM_ID } from '../actions/types';
+import {
+  SET_SELECTED_ID,
+  SELECTED_CLUSTER_ID,
+  SET_SELECTED_CLUSTER_ITEM_ID,
+  SET_SELECTED_INDEPENDENT_ITEM_ID,
+} from '../actions/types';
 
 const initialState = {
   itemParentId: null,
   selectedClusters: [],
   clusterItemId: null,
+  selectedIndependentItemId: null,
 };
 
 export const selectedType = (state = initialState, action) => {
@@ -20,7 +26,8 @@ export const selectedType = (state = initialState, action) => {
 
     case SET_SELECTED_CLUSTER_ITEM_ID:
       return { ...state, clusterItemId: action.payload };
-
+    case SET_SELECTED_INDEPENDENT_ITEM_ID:
+      return { ...state, selectedIndependentItemId: action.payload };
     default:
       return state;
   }

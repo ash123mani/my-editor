@@ -22,6 +22,8 @@ class ContentScreen extends React.PureComponent {
       selectedTypeId,
       selectedClusterItemId,
       clusterItems,
+      selectedIndependentItemId,
+      items,
     } = this.props;
 
     return (
@@ -45,6 +47,8 @@ class ContentScreen extends React.PureComponent {
               selectedTypeId={selectedTypeId}
               selectedClusterItemId={selectedClusterItemId}
               clusterItems={Object.values(clusterItems)}
+              selectedIndependentItemId={selectedIndependentItemId}
+              items={Object.values(items)}
             />
           )}
         </div>
@@ -65,7 +69,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  const { createItem, independentItem, selectedType, clusterContent } = state;
+  const { createItem, independentItem, selectedType, clusterContent, itemContent } = state;
   return {
     selectedItem: createItem.selectedItem,
     currentItemContent: independentItem.currentContent,
@@ -73,6 +77,8 @@ const mapStateToProps = state => {
     selectedTypeId: selectedType.itemParentId,
     selectedClusterItemId: selectedType.clusterItemId,
     clusterItems: clusterContent.clusterItems,
+    selectedIndependentItemId: selectedType.selectedIndependentItemId,
+    items: itemContent.items,
   };
 };
 

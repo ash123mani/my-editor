@@ -25,14 +25,28 @@ class ContentEditor extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.selectedClusterItemId !== state.selectedClusterItemId && props.selectedItem === 'showClusterItem') {
+    if (props.selectedClusterItemId !== state.selectedClusterId && props.selectedItem === 'showClusterItem') {
       const rawStateTitle = editorData.getArticleData('content', props.clusterItems, props.selectedClusterItemId);
       const contentState = convertFromRaw(rawStateTitle[0].content);
 
       const eState = EditorState.createWithContent(contentState);
       return {
+        editorStateTwo: null,
+        selectedClusterId: props.selectedClusterItemId,
+      };
+    }
+    if (
+      props.selectedIndependentItemId !== state.selectedIndependentItemId &&
+      props.selectedItem === 'independentItem'
+    ) {
+      const rawStateTitle = editorData.getArticleData('content', props.items, props.selectedIndependentItemId);
+      const contentState = convertFromRaw(rawStateTitle[0].content);
+
+      const eState = EditorState.createWithContent(contentState);
+      return {
         editorStateTwo: eState,
-        selectedClusterId: null,
+        selectedClusterId: props.selectedClusterId,
+        selectedIndependentItemId: props.selectedIndependentItemIdl,
       };
     } else {
       return null;
