@@ -1,12 +1,8 @@
 .toc-card {
-  // display: grid;
-  // /* justify-content: center; */
-  // grid-template-columns: 0.5fr 3fr 0.2fr 0.5fr;
   cursor: pointer;
 
   .ant-list-item {
     display: grid;
-    /* justify-content: center; */
     grid-template-columns: 0.5fr 3fr 0.2fr 0.5fr;
   }
 
