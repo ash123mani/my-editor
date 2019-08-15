@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
+import { Editor, EditorState, convertToRaw, getDefaultKeyBinding, ContentState, convertFromRaw } from 'draft-js';
 
 import ContentHeading from '../ContentHeading';
 import ContentEditor from '../ContentEditor';
@@ -52,15 +53,16 @@ class CreateItem extends React.PureComponent {
     return (
       <div className="create-item">
         {selectedItem !== 'cluster' ? (
-          <React.Fragment>
+          <React.Fragment key={selectedClusterItemId}>
             <ContentHeading
               heading="item"
               onConetntEditorFocus={this.onConetntEditorFocus}
               setIndependentItemHeading={setIndependentItemHeading}
               selectedItem={selectedItem}
               selectedClusterItemId={selectedClusterItemId}
-              clusterItems={Object.values(clusterItems)}
+              clusterItems={clusterItems}
               selectedTypeId={selectedTypeId}
+              onChangeContent={this.onChangeContent}
             />
             <ContentEditor
               isContentEditorFocused={this.state.contentEditorFocused}
@@ -68,14 +70,16 @@ class CreateItem extends React.PureComponent {
               setIndependentItemContent={setIndependentItemContent}
               selectedItem={selectedItem}
               selectedClusterItemId={selectedClusterItemId}
-              clusterItems={Object.values(clusterItems)}
+              clusterItems={clusterItems}
               selectedTypeId={selectedTypeId}
             />
-            <div className="create-item__submit-button">
-              <Button type="dashed" size={size} onClick={this.onSubmitItem}>
-                Save It
-              </Button>
-            </div>
+            {selectedItem !== 'showClusterItem' ? (
+              <div className="create-item__submit-button">
+                <Button type="dashed" size={size} onClick={this.onSubmitItem}>
+                  Save It
+                </Button>
+              </div>
+            ) : null}
           </React.Fragment>
         ) : (
           <ContentHeading heading="cluster" setTitle={setClusterTitle} itemToCreate={itemToCreate} />

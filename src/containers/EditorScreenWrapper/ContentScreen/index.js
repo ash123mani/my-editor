@@ -44,7 +44,7 @@ class ContentScreen extends React.PureComponent {
               setClusterItem={setClusterItem}
               selectedTypeId={selectedTypeId}
               selectedClusterItemId={selectedClusterItemId}
-              clusterItems={clusterItems}
+              clusterItems={Object.values(clusterItems)}
             />
           )}
         </div>

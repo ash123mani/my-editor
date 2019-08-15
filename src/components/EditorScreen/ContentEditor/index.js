@@ -13,10 +13,9 @@ const plugins = [inlineToolbarPlugin];
 const text = 'In this editor a toolbar shows up once you select part of the text …';
 
 class ContentEditor extends React.Component {
-  // state = {
-  //   editorStateTwo: createEditorStateWithText(text),
-  //   selectedClusterId: null
-  // };
+  state = {
+    editorStateTwo: createEditorStateWithText(text),
+  };
 
   componentDidUpdate(prevProps) {
     if (this.props.isContentEditorFocused !== prevProps.isContentEditorFocused) {
@@ -36,10 +35,7 @@ class ContentEditor extends React.Component {
         selectedClusterId: null,
       };
     } else {
-      return {
-        editorStateTwo: createEditorStateWithText(text),
-        selectedClusterId: null,
-      };
+      return null;
     }
   }
 

@@ -6,7 +6,7 @@ import editorUtils from '../../../utils/editorUtlis';
 
 const contentState = ContentState.createFromText('Title');
 
-class ContentHeading extends React.PureComponent {
+class ContentHeading extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,11 +23,7 @@ class ContentHeading extends React.PureComponent {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (
-      props.selectedClusterItemId !== state.selectedClusterItemId &&
-      props.selectedClusterItemId &&
-      props.selectedItem !== 'clusterItem'
-    ) {
+    if (props.selectedClusterItemId !== state.selectedClusterItemId && props.selectedClusterItemId) {
       console.log('first');
       const rawStateTitle = editorData.getArticleData('title', props.clusterItems, props.selectedClusterItemId);
 
@@ -40,7 +36,6 @@ class ContentHeading extends React.PureComponent {
         selectedClusterId: props.selectedClusterId,
       };
     } else {
-      console.log('last');
       return null;
     }
   }
@@ -89,7 +84,7 @@ class ContentHeading extends React.PureComponent {
 
   render() {
     return (
-      <div className="create-item__name">
+      <div className="create-item__name" key={this.props.selectedClusterItemId || this.props.selectedItem}>
         <div className="tag">
           <div className="tag-name">Add Item</div>
         </div>

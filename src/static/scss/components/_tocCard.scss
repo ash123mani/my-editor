@@ -39,6 +39,20 @@
       border-bottom: none;
     }
   }
+
+  .ant-list-item-meta-description {
+    font-weight: 500;
+    color: #252020c4;
+  }
+
+  .ant-list-item {
+    box-shadow: 1px 1px 1px 1px #efdcdc;
+  }
+
+  .ant-list-item:hover {
+    box-shadow: 1px 1px 1px 1px #d4bcbc;
+    // box-shadow: none;
+  }
 }
 
 .circle {

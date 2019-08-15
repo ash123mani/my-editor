@@ -1,19 +1,19 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { List, Icon, Menu, Dropdown, Popover } from 'antd';
+import { List, Icon, Menu, Popover } from 'antd';
 
-const menu = (
-  <Menu>
-    <Menu.Item>Delete</Menu.Item>
-    <Menu.Item>Bookmark</Menu.Item>
-    <Menu.Item>Archive</Menu.Item>
-  </Menu>
-);
+import TOCMore from '../TOCMore';
 
 class TOCCard extends React.Component {
   state = {
     isItemClicked: false,
   };
+
+  componentDidUpdate() {
+    if (this.props.itemType === 'clusterItem') {
+      this.props.setSelectedClusterItemId(null);
+    }
+  }
 
   createClusterItem = event => {
     this.props.itemToCreate('clusterItem');
@@ -26,6 +26,7 @@ class TOCCard extends React.Component {
 
   onClusterItemClick = (clusterItemId, event) => {
     this.props.itemToCreate('showClusterItem');
+
     this.props.setSelectedClusterItemId(clusterItemId);
   };
 
@@ -84,9 +85,9 @@ class TOCCard extends React.Component {
                 <Icon type="like" />
               )}
 
-              <Dropdown overlay={menu}>
+              <Popover content={<TOCMore />} placement="right" trigger="click">
                 <Icon type="more" />
-              </Dropdown>
+              </Popover>
 
               {selectedClusterIds && selectedClusterIds.includes(item.id) ? this.renderItemClusters(item) : null}
             </List.Item>
