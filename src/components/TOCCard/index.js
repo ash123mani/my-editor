@@ -98,7 +98,7 @@ class TOCCard extends React.Component {
               <Popover
                 content={<TOCMore clusterId={item.id} deleteCluster={this.onDeleteCluster} />}
                 placement="right"
-                trigger="click"
+                trigger="hover"
               >
                 <Icon type="more" />
               </Popover>

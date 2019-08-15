@@ -79,7 +79,7 @@ class CreateItem extends React.PureComponent {
               selectedIndependentItemId={selectedIndependentItemId}
               items={items}
             />
-            {selectedItem !== 'showClusterItem' ? (
+            {selectedItem !== 'showClusterItem' && selectedItem !== 'independentItem' ? (
               <div className="create-item__submit-button">
                 <Button type="dashed" size={size} onClick={this.onSubmitItem}>
                   Save It
