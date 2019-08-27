@@ -3,6 +3,7 @@ import {
   SELECTED_CLUSTER_ID,
   SET_SELECTED_CLUSTER_ITEM_ID,
   SET_SELECTED_INDEPENDENT_ITEM_ID,
+  CURRENTLY_SLECETED,
 } from './types';
 
 export const setSelectedId = id => {
@@ -29,6 +30,13 @@ export const setSelectedClusterItemId = id => {
 export const setSelectedIndependentItemId = id => {
   return {
     type: SET_SELECTED_INDEPENDENT_ITEM_ID,
+    payload: id,
+  };
+};
+
+export const setCurrentlySelectedId = id => {
+  return {
+    type: CURRENTLY_SLECETED,
     payload: id,
   };
 };

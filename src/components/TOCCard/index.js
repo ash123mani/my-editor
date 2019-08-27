@@ -18,9 +18,13 @@ class TOCCard extends React.Component {
   createClusterItem = event => {
     this.props.itemToCreate('clusterItem');
     this.props.setSelectedId(event.target.id);
+
+    this.props.setCurrentlySelectedId(event.target.id);
   };
 
   itemClicked = (item, event) => {
+    this.props.setCurrentlySelectedId(item.id);
+
     if (item.type === 'cluster') {
       this.props.setSelectedClusterId(item.id);
     }
@@ -34,6 +38,8 @@ class TOCCard extends React.Component {
   onClusterItemClick = (clusterItemId, event) => {
     this.props.itemToCreate('showClusterItem');
     this.props.setSelectedClusterItemId(clusterItemId);
+
+    this.props.setCurrentlySelectedId(clusterItemId);
   };
 
   onDeleteCluster = clusterId => {

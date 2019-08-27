@@ -15,6 +15,8 @@ const text = 'In this editor a toolbar shows up once you select part of the text
 class ContentEditor extends React.Component {
   state = {
     editorStateTwo: createEditorStateWithText(text),
+    selectedClusterId: null,
+    selectedIndependentItemId: null,
   };
 
   componentDidUpdate(prevProps) {
@@ -26,27 +28,23 @@ class ContentEditor extends React.Component {
 
   static getDerivedStateFromProps(props, state) {
     if (props.selectedClusterItemId !== state.selectedClusterId && props.selectedItem === 'showClusterItem') {
-      const rawStateTitle = editorData.getArticleData('content', props.clusterItems, props.selectedClusterItemId);
-      const contentState = convertFromRaw(rawStateTitle[0].content);
-
-      const eState = EditorState.createWithContent(contentState);
+      const eState = editorData.getEditorState('content', props.clusterItems, props.selectedClusterItemId);
       return {
         editorStateTwo: eState,
         selectedClusterId: props.selectedClusterItemId,
+        selectedIndependentItemId: props.selectedIndependentItemId,
       };
     }
+
     if (
       props.selectedIndependentItemId !== state.selectedIndependentItemId &&
       props.selectedItem === 'independentItem'
     ) {
-      const rawStateTitle = editorData.getArticleData('content', props.items, props.selectedIndependentItemId);
-      const contentState = convertFromRaw(rawStateTitle[0].content);
-
-      const eState = EditorState.createWithContent(contentState);
+      const eState = editorData.getEditorState('content', props.items, props.selectedIndependentItemId);
       return {
         editorStateTwo: eState,
-        selectedClusterId: props.selectedClusterId,
-        selectedIndependentItemId: props.selectedIndependentItemIdl,
+        selectedClusterId: props.selectedClusterItemId,
+        selectedIndependentItemId: props.selectedIndependentItemId,
       };
     } else {
       return null;

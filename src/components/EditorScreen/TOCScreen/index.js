@@ -18,6 +18,7 @@ class TOCScreen extends React.Component {
       setSelectedClusterItemId,
       deleteCluster,
       setSelectedIndependentItemId,
+      setCurrentlySelectedId,
     } = this.props;
 
     return (
@@ -37,6 +38,7 @@ class TOCScreen extends React.Component {
             setSelectedClusterItemId={setSelectedClusterItemId}
             deleteCluster={deleteCluster}
             setSelectedIndependentItemId={setSelectedIndependentItemId}
+            setCurrentlySelectedId={setCurrentlySelectedId}
           />
         </div>
       </div>
