@@ -20,7 +20,7 @@ const mapStateToProps = state => {
     clusterItems: clusterContent.clusterItems,
     selectedStuffId: selectedType.itemParentId,
     selectedClusterIds: selectedType.selectedClusters,
-    currentlySelected: selectedType.currentlySelectedId,
+    currentlySelectedId: selectedType.currentlySelectedId,
   };
 };
 

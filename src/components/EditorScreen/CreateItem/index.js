@@ -49,13 +49,14 @@ class CreateItem extends React.PureComponent {
       selectedTypeId,
       selectedIndependentItemId,
       items,
+      currentlySelectedId,
     } = this.props;
     const { size } = this.state;
 
     return (
       <div className="create-item">
         {selectedItem !== 'cluster' ? (
-          <React.Fragment key={`${selectedIndependentItemId}--${selectedClusterItemId}--${selectedItem}`}>
+          <React.Fragment key={`${currentlySelectedId}--${selectedItem}`}>
             <ContentHeading
               heading="item"
               onConetntEditorFocus={this.onConetntEditorFocus}
@@ -67,6 +68,7 @@ class CreateItem extends React.PureComponent {
               onChangeContent={this.onChangeContent}
               selectedIndependentItemId={selectedIndependentItemId}
               items={items}
+              currentlySelectedId={currentlySelectedId}
             />
             <ContentEditor
               isContentEditorFocused={this.state.contentEditorFocused}
@@ -78,6 +80,7 @@ class CreateItem extends React.PureComponent {
               selectedTypeId={selectedTypeId}
               selectedIndependentItemId={selectedIndependentItemId}
               items={items}
+              currentlySelectedId={currentlySelectedId}
             />
             {selectedItem !== 'showClusterItem' && selectedItem !== 'independentItem' ? (
               <div className="create-item__submit-button">
@@ -88,7 +91,13 @@ class CreateItem extends React.PureComponent {
             ) : null}
           </React.Fragment>
         ) : (
-          <ContentHeading heading="cluster" setTitle={setClusterTitle} itemToCreate={itemToCreate} />
+          <ContentHeading
+            heading="cluster"
+            setTitle={setClusterTitle}
+            itemToCreate={itemToCreate}
+            currentlySelectedId={currentlySelectedId}
+            selectedItem={selectedItem}
+          />
         )}
       </div>
     );

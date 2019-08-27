@@ -12,11 +12,13 @@ const plugins = [inlineToolbarPlugin];
 
 const text = 'In this editor a toolbar shows up once you select part of the text …';
 
-class ContentEditor extends React.Component {
+class ContentEditor extends React.PureComponent {
   state = {
     editorStateTwo: createEditorStateWithText(text),
     selectedClusterId: null,
     selectedIndependentItemId: null,
+    currentlySelectedId: null,
+    selectedItem: null,
   };
 
   componentDidUpdate(prevProps) {
@@ -27,26 +29,33 @@ class ContentEditor extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.selectedClusterItemId !== state.selectedClusterId && props.selectedItem === 'showClusterItem') {
-      const eState = editorData.getEditorState('content', props.clusterItems, props.selectedClusterItemId);
+    if (props.currentlySelectedId !== state.currentlySelectedId && props.selectedItem !== state.selectedItem) {
+      console.log('inide lnffl', props, state);
+
+      const data = props.selectedItem === 'showClusterItem' ? props.clusterItems : props.items;
+
+      const eState = editorData.getEditorState('content', data, props.currentlySelectedId);
       return {
         editorStateTwo: eState,
         selectedClusterId: props.selectedClusterItemId,
         selectedIndependentItemId: props.selectedIndependentItemId,
+        currentlySelectedId: props.currentlySelectedId,
+        selectedItem: props.selectedItem,
       };
     }
 
-    if (
-      props.selectedIndependentItemId !== state.selectedIndependentItemId &&
-      props.selectedItem === 'independentItem'
-    ) {
-      const eState = editorData.getEditorState('content', props.items, props.selectedIndependentItemId);
-      return {
-        editorStateTwo: eState,
-        selectedClusterId: props.selectedClusterItemId,
-        selectedIndependentItemId: props.selectedIndependentItemId,
-      };
-    } else {
+    // if (
+    //   props.selectedIndependentItemId !== state.selectedIndependentItemId &&
+    //   props.selectedItem === 'independentItem'
+    // ) {
+    //   const eState = editorData.getEditorState('content', props.items, props.selectedIndependentItemId);
+    //   return {
+    //     editorStateTwo: eState,
+    //     selectedClusterId: props.selectedClusterItemId,
+    //     selectedIndependentItemId: props.selectedIndependentItemId,
+    //   };
+    // }
+    else {
       return null;
     }
   }

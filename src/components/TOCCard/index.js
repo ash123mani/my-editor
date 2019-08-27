@@ -19,7 +19,7 @@ class TOCCard extends React.Component {
     this.props.itemToCreate('clusterItem');
     this.props.setSelectedId(event.target.id);
 
-    this.props.setCurrentlySelectedId(event.target.id);
+    // this.props.setCurrentlySelectedId(event.target.id);
   };
 
   itemClicked = (item, event) => {
