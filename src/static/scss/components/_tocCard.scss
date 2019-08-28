@@ -19,15 +19,18 @@
 
   .cluster-item {
     grid-column: 1/-1;
-    margin-left: 12%;
+    margin-left: 13%;
+    margin-top: 5px;
+    background: #332a2a0f;
+    border-radius: 30px;
 
     &-title {
       padding-top: 10px;
       padding-bottom: 10px;
-      border-bottom: 1px solid #c89699;
+      // border-bottom: 1px solid #c89699;
 
       > .ant-list-item-meta {
-        margin-left: 10px;
+        padding-left: 20px;
       }
     }
 
