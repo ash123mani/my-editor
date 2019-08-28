@@ -32,55 +32,56 @@ class TOCHeader extends Component {
     this.props.setSelectedClusterItemId(null);
   };
 
-  render() {
-    return (
-      <div className="top-bar">
-        <div className="top-bar__workspace-name">
-          <span>Workspace</span>
-        </div>
+  onMininmizeSidebar = e => {
+    this.props.sideBarAction(true);
+  };
 
-        <Popover
-          content={
-            <div onClick={this.hide} className="create-options">
-              <div id="item" onClick={this.onItemOptionsClick}>
-                <div className="create-options__item">
-                  <Icon type="plus" />
-                  <span id="item">Create iteam</span>
+  render() {
+    const { isSideBarMinimized } = this.props;
+    return (
+      <React.Fragment>
+        <div className="top-bar">
+          <div className="top-bar__workspace-name">
+            <span>Workspace</span>
+          </div>
+
+          <Popover
+            content={
+              <div onClick={this.hide} className="create-options">
+                <div id="item" onClick={this.onItemOptionsClick}>
+                  <div className="create-options__item">
+                    <Icon type="plus" />
+                    <span id="item">Create iteam</span>
+                  </div>
+                </div>
+                <div id="item" onClick={this.onClusterOptionsClick}>
+                  <div className="create-options__item">
+                    <Icon type="plus-square" />
+                    <span id="cluster">Create cluster</span>
+                  </div>
                 </div>
               </div>
-              <div id="item" onClick={this.onClusterOptionsClick}>
-                <div className="create-options__item">
-                  <Icon type="plus-square" />
-                  <span id="cluster">Create cluster</span>
-                </div>
+            }
+            trigger="click"
+            placement="bottom"
+            visible={this.state.visible}
+            onVisibleChange={this.handleVisibleChange}
+            overlayClassName="demo-class"
+          >
+            <Popover content={'Create'} trigger="hover" mouseEnterDelay={0.7} className="demo-class">
+              <div className="top-bar__plus" onClick={this.onClick}>
+                <Icon type="plus" />
               </div>
-            </div>
-          }
-          trigger="click"
-          placement="bottom"
-          visible={this.state.visible}
-          onVisibleChange={this.handleVisibleChange}
-          overlayClassName="demo-class"
-        >
-          <Popover content={'Create'} trigger="hover" mouseEnterDelay={0.7} className="demo-class">
-            <div className="top-bar__plus" onClick={this.onClick}>
-              <Icon type="plus" />
+            </Popover>
+          </Popover>
+
+          <Popover content={'Minimize SideBar'} trigger="hover" mouseEnterDelay={0.7}>
+            <div className="top-bar__shrink" onClick={this.onMininmizeSidebar}>
+              <Icon type="double-left" />
             </div>
           </Popover>
-        </Popover>
-
-        <Popover content={'Maximize SideBar'} trigger="hover" mouseEnterDelay={0.7}>
-          <div className="top-bar__expand">
-            <Icon type="fullscreen" />
-          </div>
-        </Popover>
-
-        <Popover content={'Minimize SideBar'} trigger="hover" mouseEnterDelay={0.7}>
-          <div className="top-bar__shrink">
-            <Icon type="double-left" />
-          </div>
-        </Popover>
-      </div>
+        </div>
+      </React.Fragment>
     );
   }
 }

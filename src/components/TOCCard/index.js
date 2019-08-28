@@ -7,6 +7,7 @@ import TOCMore from '../TOCMore';
 class TOCCard extends React.Component {
   state = {
     isItemClicked: false,
+    likes: 0,
   };
 
   componentDidUpdate() {
@@ -49,6 +50,10 @@ class TOCCard extends React.Component {
     if (item.type === 'item') {
       this.props.deleteIndependentItem(item.id);
     }
+  };
+
+  onLike = () => {
+    this.setState({ likes: this.state.likes + 1 });
   };
 
   renderItemClusters = item => {
@@ -103,7 +108,9 @@ class TOCCard extends React.Component {
                   <div onClick={this.createClusterItem} id={item.id} className="circle" />
                 </Popover>
               ) : (
-                <Icon type="like" />
+                <Popover content={<div>{this.state.likes} likes</div>}>
+                  <Icon type="like" onClick={this.onLike} />
+                </Popover>
               )}
 
               <Popover content={<TOCMore item={item} deleteItem={this.deleteItem} />} placement="right" trigger="hover">

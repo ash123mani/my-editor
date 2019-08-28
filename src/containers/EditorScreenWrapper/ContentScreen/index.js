@@ -24,10 +24,11 @@ class ContentScreen extends React.PureComponent {
       clusterItems,
       selectedIndependentItemId,
       items,
+      isSideBarMinimized,
     } = this.props;
 
     return (
-      <div className="content-screen">
+      <div className={`content-screen ${isSideBarMinimized ? 'minimized-content-screen' : null}`}>
         <div className="content-screen__wrapper">
           {!selectedItem ? (
             <div className="content-screen--empty">
@@ -69,7 +70,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  const { createItem, independentItem, selectedType, clusterContent, itemContent } = state;
+  const { createItem, independentItem, selectedType, clusterContent, itemContent, selectedTab } = state;
   return {
     selectedItem: createItem.selectedItem,
     currentItemContent: independentItem.currentContent,
@@ -79,6 +80,7 @@ const mapStateToProps = state => {
     clusterItems: clusterContent.clusterItems,
     selectedIndependentItemId: selectedType.selectedIndependentItemId,
     items: itemContent.items,
+    isSideBarMinimized: selectedTab.isSideBarMinimized,
   };
 };
 

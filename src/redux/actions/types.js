@@ -1,4 +1,5 @@
 export const SELECTED_TAB = 'SELECTED_TAB';
+export const SIDE_BAR_ACTION = 'SIDE_BAR_ACTION';
 
 export const ITEM_TO_CREATE = 'ITEM_TO_CREATE';
 

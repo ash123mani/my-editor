@@ -1,7 +1,8 @@
-import { SELECTED_TAB } from '../actions/types';
+import { SELECTED_TAB, SIDE_BAR_ACTION } from '../actions/types';
 
 const initialState = {
   selectedTab: 'All',
+  isSideBarMinimized: false,
 };
 
 export const selectedTab = (state = initialState, action) => {
@@ -10,6 +11,11 @@ export const selectedTab = (state = initialState, action) => {
       return {
         ...state,
         selectedTab: action.payload,
+      };
+    case SIDE_BAR_ACTION:
+      return {
+        ...state,
+        isSideBarMinimized: action.payload,
       };
     default:
       return state;

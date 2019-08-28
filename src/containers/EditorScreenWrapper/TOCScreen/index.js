@@ -10,10 +10,11 @@ import {
 } from '../../../redux/actions/currentSelectedType';
 import { deleteCluster } from '../../../redux/actions/clusterContent';
 import { deleteIndependentItem } from '../../../redux/actions/createItemContent';
+import { sideBarAction } from '../../../redux/actions/setTabActions';
 import TOCScreen from '../../../components/EditorScreen/TOCScreen';
 
 const mapStateToProps = state => {
-  const { clusterContent, itemContent, createItem, selectedType } = state;
+  const { clusterContent, itemContent, createItem, selectedType, selectedTab } = state;
   return {
     clusters: clusterContent.clusters,
     items: itemContent.items,
@@ -22,6 +23,7 @@ const mapStateToProps = state => {
     selectedStuffId: selectedType.itemParentId,
     selectedClusterIds: selectedType.selectedClusters,
     currentlySelected: selectedType.currentlySelectedId,
+    isSideBarMinimized: selectedTab.isSideBarMinimized,
   };
 };
 
@@ -35,6 +37,7 @@ const mapDispatchToProps = dispatch => {
     setSelectedIndependentItemId: id => dispatch(setSelectedIndependentItemId(id)),
     setCurrentlySelectedId: id => dispatch(setCurrentlySelectedId(id)),
     deleteIndependentItem: id => dispatch(deleteIndependentItem(id)),
+    sideBarAction: flag => dispatch(sideBarAction(flag)),
   };
 };
 
