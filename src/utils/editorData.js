@@ -1,4 +1,4 @@
-import { convertToRaw, EditorState, convertFromRaw } from 'draft-js';
+import { EditorState, convertFromRaw } from 'draft-js';
 
 export default {
   getArticleData(section, data, id) {
@@ -6,6 +6,7 @@ export default {
       if (item.itemId === id || item.id === id) {
         return section === 'title' ? item.title : item.content;
       }
+      return null;
     });
   },
 

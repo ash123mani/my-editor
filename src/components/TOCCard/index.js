@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { List, Icon, Menu, Popover } from 'antd';
+import { List, Icon, Popover } from 'antd';
 
 import TOCMore from '../TOCMore';
 
@@ -82,7 +82,7 @@ class TOCCard extends React.Component {
   };
 
   render() {
-    const { clusters, items, selectedClusterIds, deleteCluster } = this.props;
+    const { clusters, items, selectedClusterIds } = this.props;
     const data = [...clusters, ...items];
 
     return (

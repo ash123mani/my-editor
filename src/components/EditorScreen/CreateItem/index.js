@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from 'antd';
-import { Editor, EditorState, convertToRaw, getDefaultKeyBinding, ContentState, convertFromRaw } from 'draft-js';
 
 import ContentHeading from '../ContentHeading';
 import ContentEditor from '../ContentEditor';

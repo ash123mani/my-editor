@@ -1,5 +1,5 @@
 import React from 'react';
-import { Editor, EditorState, convertToRaw, getDefaultKeyBinding, ContentState, convertFromRaw } from 'draft-js';
+import { Editor, EditorState, convertToRaw, getDefaultKeyBinding, ContentState } from 'draft-js';
 
 import editorData from '../../../utils/editorData';
 import editorUtils from '../../../utils/editorUtlis';
@@ -28,8 +28,6 @@ class ContentHeading extends React.Component {
       return {
         editorStateOne: eState,
       };
-    } else {
-      return null;
     }
 
     if (
