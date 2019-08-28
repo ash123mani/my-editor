@@ -9,6 +9,7 @@ import {
   setCurrentlySelectedId,
 } from '../../../redux/actions/currentSelectedType';
 import { deleteCluster } from '../../../redux/actions/clusterContent';
+import { deleteIndependentItem } from '../../../redux/actions/createItemContent';
 import TOCScreen from '../../../components/EditorScreen/TOCScreen';
 
 const mapStateToProps = state => {
@@ -33,6 +34,7 @@ const mapDispatchToProps = dispatch => {
     deleteCluster: id => dispatch(deleteCluster(id)),
     setSelectedIndependentItemId: id => dispatch(setSelectedIndependentItemId(id)),
     setCurrentlySelectedId: id => dispatch(setCurrentlySelectedId(id)),
+    deleteIndependentItem: id => dispatch(deleteIndependentItem(id)),
   };
 };
 

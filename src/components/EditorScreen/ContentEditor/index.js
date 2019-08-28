@@ -31,8 +31,6 @@ class ContentEditor extends React.Component {
       const eState = editorData.getEditorState('content', props.clusterItems, props.selectedClusterItemId);
       return {
         editorStateTwo: eState,
-        selectedClusterId: props.selectedClusterItemId,
-        selectedIndependentItemId: props.selectedIndependentItemId,
       };
     }
 
@@ -43,8 +41,6 @@ class ContentEditor extends React.Component {
       const eState = editorData.getEditorState('content', props.items, props.selectedIndependentItemId);
       return {
         editorStateTwo: eState,
-        selectedClusterId: props.selectedClusterItemId,
-        selectedIndependentItemId: props.selectedIndependentItemId,
       };
     } else {
       return null;

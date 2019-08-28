@@ -42,8 +42,13 @@ class TOCCard extends React.Component {
     this.props.setCurrentlySelectedId(clusterItemId);
   };
 
-  onDeleteCluster = clusterId => {
-    this.props.deleteCluster(clusterId);
+  deleteItem = item => {
+    if (item.type === 'cluster') {
+      this.props.deleteCluster(item.id);
+    }
+    if (item.type === 'item') {
+      this.props.deleteIndependentItem(item.id);
+    }
   };
 
   renderItemClusters = item => {
@@ -101,11 +106,7 @@ class TOCCard extends React.Component {
                 <Icon type="like" />
               )}
 
-              <Popover
-                content={<TOCMore clusterId={item.id} deleteCluster={this.onDeleteCluster} />}
-                placement="right"
-                trigger="hover"
-              >
+              <Popover content={<TOCMore item={item} deleteItem={this.deleteItem} />} placement="right" trigger="hover">
                 <Icon type="more" />
               </Popover>
 

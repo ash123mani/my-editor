@@ -27,9 +27,9 @@ class ContentHeading extends React.Component {
       const eState = editorData.getEditorState('title', props.clusterItems, props.selectedClusterItemId);
       return {
         editorStateOne: eState,
-        selectedClusterId: props.selectedClusterItemId,
-        selectedIndependentItemId: props.selectedIndependentItemId,
       };
+    } else {
+      return null;
     }
 
     if (
@@ -39,8 +39,6 @@ class ContentHeading extends React.Component {
       const eState = editorData.getEditorState('title', props.items, props.selectedIndependentItemId);
       return {
         editorStateOne: eState,
-        selectedClusterId: props.selectedClusterItemId,
-        selectedIndependentItemId: props.selectedIndependentItemId,
       };
     } else {
       return null;
