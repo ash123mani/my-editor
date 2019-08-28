@@ -1,6 +1,6 @@
 import uuidv1 from 'uuid/v1';
 
-import { CREATE_INDEPENDENT_ITEM } from './types';
+import { CREATE_INDEPENDENT_ITEM, DELETE_INDEPENDENT_ITEM } from './types';
 
 export const createItemContent = itemData => {
   const itemId = uuidv1();
@@ -15,5 +15,12 @@ export const createItemContent = itemData => {
         type: 'item',
       },
     },
+  };
+};
+
+export const deleteIndependentItem = id => {
+  return {
+    type: DELETE_INDEPENDENT_ITEM,
+    payload: id,
   };
 };

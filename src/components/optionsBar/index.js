@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from 'antd';
 
 class OptionsBar extends React.Component {
-  tabOptions = ['All', 'Recent', 'Board', 'Graph'];
+  tabOptions = ['All', 'BookMarks', 'Archieved '];
 
   onClick = e => {
     this.props.setTab(e.target.id);

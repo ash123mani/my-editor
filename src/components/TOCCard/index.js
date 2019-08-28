@@ -1,12 +1,13 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { List, Icon, Menu, Popover } from 'antd';
+import { List, Icon, Popover } from 'antd';
 
 import TOCMore from '../TOCMore';
 
 class TOCCard extends React.Component {
   state = {
     isItemClicked: false,
+    likes: 0,
   };
 
   componentDidUpdate() {
@@ -18,9 +19,13 @@ class TOCCard extends React.Component {
   createClusterItem = event => {
     this.props.itemToCreate('clusterItem');
     this.props.setSelectedId(event.target.id);
+
+    this.props.setCurrentlySelectedId(event.target.id);
   };
 
   itemClicked = (item, event) => {
+    this.props.setCurrentlySelectedId(item.id);
+
     if (item.type === 'cluster') {
       this.props.setSelectedClusterId(item.id);
     }
@@ -34,10 +39,21 @@ class TOCCard extends React.Component {
   onClusterItemClick = (clusterItemId, event) => {
     this.props.itemToCreate('showClusterItem');
     this.props.setSelectedClusterItemId(clusterItemId);
+
+    this.props.setCurrentlySelectedId(clusterItemId);
   };
 
-  onDeleteCluster = clusterId => {
-    this.props.deleteCluster(clusterId);
+  deleteItem = item => {
+    if (item.type === 'cluster') {
+      this.props.deleteCluster(item.id);
+    }
+    if (item.type === 'item') {
+      this.props.deleteIndependentItem(item.id);
+    }
+  };
+
+  onLike = () => {
+    this.setState({ likes: this.state.likes + 1 });
   };
 
   renderItemClusters = item => {
@@ -71,7 +87,7 @@ class TOCCard extends React.Component {
   };
 
   render() {
-    const { clusters, items, selectedClusterIds, deleteCluster } = this.props;
+    const { clusters, items, selectedClusterIds } = this.props;
     const data = [...clusters, ...items];
 
     return (
@@ -92,14 +108,12 @@ class TOCCard extends React.Component {
                   <div onClick={this.createClusterItem} id={item.id} className="circle" />
                 </Popover>
               ) : (
-                <Icon type="like" />
+                <Popover content={<div>{this.state.likes} likes</div>}>
+                  <Icon type="like" onClick={this.onLike} />
+                </Popover>
               )}
 
-              <Popover
-                content={<TOCMore clusterId={item.id} deleteCluster={this.onDeleteCluster} />}
-                placement="right"
-                trigger="hover"
-              >
+              <Popover content={<TOCMore item={item} deleteItem={this.deleteItem} />} placement="right" trigger="hover">
                 <Icon type="more" />
               </Popover>
 

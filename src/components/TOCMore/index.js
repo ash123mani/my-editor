@@ -2,7 +2,7 @@ import React from 'react';
 
 class TOCMore extends React.Component {
   onDelete = () => {
-    this.props.deleteCluster(this.props.clusterId);
+    this.props.deleteItem(this.props.item);
   };
 
   render() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Editor, EditorState, convertToRaw, getDefaultKeyBinding, ContentState, convertFromRaw } from 'draft-js';
+import { Editor, EditorState, convertToRaw, getDefaultKeyBinding, ContentState } from 'draft-js';
 
 import editorData from '../../../utils/editorData';
 import editorUtils from '../../../utils/editorUtlis';
@@ -12,7 +12,7 @@ class ContentHeading extends React.Component {
     this.state = {
       editorStateOne: editorUtils.moveSelectionToEnd(EditorState.createWithContent(contentState)),
       selectedClusterId: null,
-      parentItemId: null,
+      selectedIndependentItemId: null,
     };
   }
 
@@ -23,14 +23,10 @@ class ContentHeading extends React.Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.selectedClusterItemId !== state.selectedClusterItemId && props.selectedClusterItemId) {
-      const rawStateTitle = editorData.getArticleData('title', props.clusterItems, props.selectedClusterItemId);
-      const contentState = convertFromRaw(rawStateTitle[0].title);
-      const eState = EditorState.createWithContent(contentState);
-
+    if (props.selectedClusterItemId !== state.selectedClusterItemId && props.selectedItem === 'showClusterItem') {
+      const eState = editorData.getEditorState('title', props.clusterItems, props.selectedClusterItemId);
       return {
         editorStateOne: eState,
-        selectedClusterId: props.selectedClusterId,
       };
     }
 
@@ -38,14 +34,9 @@ class ContentHeading extends React.Component {
       props.selectedIndependentItemId !== state.selectedIndependentItemId &&
       props.selectedItem === 'independentItem'
     ) {
-      const rawStateTitle = editorData.getArticleData('title', props.items, props.selectedIndependentItemId);
-      const contentState = convertFromRaw(rawStateTitle[0].title);
-      const eState = EditorState.createWithContent(contentState);
-
+      const eState = editorData.getEditorState('title', props.items, props.selectedIndependentItemId);
       return {
         editorStateOne: eState,
-        selectedClusterId: props.selectedClusterId,
-        selectedIndependentItemId: props.selectedIndependentItemIdl,
       };
     } else {
       return null;
