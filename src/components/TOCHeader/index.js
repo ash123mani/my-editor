@@ -16,6 +16,7 @@ class TOCHeader extends Component {
       visible: false,
       clicked: true,
     });
+    console.log('test');
   };
 
   handleVisibleChange = visible => {
