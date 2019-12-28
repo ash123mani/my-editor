@@ -46,9 +46,11 @@ class TOCCard extends React.Component {
   deleteItem = item => {
     if (item.type === 'cluster') {
       this.props.deleteCluster(item.id);
+      this.props.itemToCreate(null);
     }
     if (item.type === 'item') {
       this.props.deleteIndependentItem(item.id);
+      this.props.itemToCreate(null);
     }
   };
 

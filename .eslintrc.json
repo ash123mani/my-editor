@@ -5,14 +5,7 @@
     "allowImportExportEverywhere": false,
     "codeFrame": false
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:prettier/recommended",
-    "prettier",
-    "prettier/react",
-    "airbnb",
-    "prettier"
-  ],
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "prettier", "prettier/react", "airbnb"],
   "plugins": ["react-hooks", "prettier"],
   "env": {
     "browser": true,
@@ -26,10 +19,7 @@
     "no-return-assign": ["off"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-wrap-multilines": [
-      "error",
-      { "declaration": false, "assignment": false }
-    ],
+    "react/jsx-wrap-multilines": ["error", { "declaration": false, "assignment": false }],
     "prettier/prettier": "error"
   }
 }

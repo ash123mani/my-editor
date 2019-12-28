@@ -54,7 +54,7 @@ class CreateItem extends React.PureComponent {
     return (
       <div className="create-item">
         {selectedItem !== 'cluster' ? (
-          <React.Fragment key={`${selectedIndependentItemId}--${selectedClusterItemId}--${selectedItem}`}>
+          <React.Fragment key={`${selectedIndependentItemId}-${selectedClusterItemId}-${selectedItem}`}>
             <ContentHeading
               heading="item"
               onConetntEditorFocus={this.onConetntEditorFocus}

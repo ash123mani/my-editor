@@ -20,17 +20,22 @@
   .cluster-item {
     grid-column: 1/-1;
     margin-left: 13%;
-    margin-top: 5px;
-    background: #332a2a0f;
-    border-radius: 30px;
+    margin-top: 10px;
 
     &-title {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      // border-bottom: 1px solid #c89699;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      margin-top: 5px;
+      background: #332a2a0f;
+      border-radius: 5px;
+      margin-right: 10px;
 
       > .ant-list-item-meta {
         padding-left: 20px;
+      }
+
+      &:hover {
+        background: #f375750f;
       }
     }
 
@@ -46,6 +51,7 @@
 
   .ant-list-item {
     box-shadow: 1px 1px 1px 1px #efdcdc;
+    margin-top: 10px;
   }
 
   .ant-list-item:hover {

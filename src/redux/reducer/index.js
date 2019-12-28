@@ -1,12 +1,24 @@
-import { combineReducers } from 'redux';
+import { combineReducers, createStore } from 'redux';
+
 import { selectedTab } from './selectedTab';
 import { createItem } from './createItem';
 import { clusterContent } from './clusterContent';
 import { independentItem } from './independentItem';
 import { itemContent } from './itemContent';
 import { selectedType } from './currentSelectedType';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-export default combineReducers({
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+
+const persistConfig = {
+  key: 'root',
+  storage: storage,
+  // blacklist: ['selectedType'],
+  stateReconciler: autoMergeLevel2 // see "Merge Process" section for details.
+ };
+
+const rootReducer = combineReducers({
   selectedTab,
   createItem,
   clusterContent,
@@ -14,3 +26,9 @@ export default combineReducers({
   itemContent,
   selectedType,
 });
+
+const pReducer = persistReducer(persistConfig, rootReducer);
+
+
+export default pReducer;
+

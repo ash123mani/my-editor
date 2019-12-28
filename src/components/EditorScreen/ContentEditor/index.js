@@ -1,20 +1,29 @@
 import React from 'react';
 import { convertToRaw, EditorState } from 'draft-js';
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
+
 import createInlineToolbarPlugin from 'draft-js-inline-toolbar-plugin';
 import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 
+import createMentionPlugin, { defaultSuggestionsFilter } from 'draft-js-mention-plugin';
+import 'draft-js-mention-plugin/lib/plugin.css';
+import { mentions } from '../../constants/mention';
 import editorData from '../../../utils/editorData';
 
 const inlineToolbarPlugin = createInlineToolbarPlugin();
+const mentionPlugin = createMentionPlugin();
+
 const { InlineToolbar } = inlineToolbarPlugin;
-const plugins = [inlineToolbarPlugin];
+const { MentionSuggestions } = mentionPlugin;
+
+const plugins = [inlineToolbarPlugin, mentionPlugin];
 
 const text = 'In this editor a toolbar shows up once you select part of the text …';
 
 class ContentEditor extends React.Component {
   state = {
     editorStateTwo: createEditorStateWithText(text),
+    suggestions: mentions,
     selectedClusterId: null,
     selectedIndependentItemId: null,
   };
@@ -57,6 +66,12 @@ class ContentEditor extends React.Component {
     this.props.setIndependentItemContent(rawState);
   };
 
+  onSearchChange = ({ value }) => {
+    this.setState({
+      suggestions: defaultSuggestionsFilter(value, mentions),
+    });
+  };
+
   render() {
     return (
       <div className="create-item__content">
@@ -69,6 +84,7 @@ class ContentEditor extends React.Component {
           }}
         />
         <InlineToolbar />
+        <MentionSuggestions onSearchChange={this.onSearchChange} suggestions={this.state.suggestions} />
       </div>
     );
   }
