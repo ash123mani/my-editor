@@ -86,10 +86,16 @@ class ContentHeading extends React.Component {
   };
 
   render() {
+    const { selectedClusterItemId, selectedItem } = this.props;
+
     return (
-      <div className="create-item__name" key={this.props.selectedClusterItemId || this.props.selectedItem}>
+      <div className="create-item__name">
         <div className="tag">
-          <div className="tag-name">Add Item</div>
+          <div className="tag-name">
+            {selectedItem == 'item' || selectedItem == 'clusterItem' || selectedItem == 'cluster'
+              ? 'Add Item'
+              : 'Read Only'}
+          </div>
         </div>
         <Editor
           onChange={this.onChangeHeading}
