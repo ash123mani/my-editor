@@ -13,17 +13,17 @@ const Header = props => {
 
       <div className="header__icon">
         <Icon type="desktop" />
-        <span>My Editor</span>
+        <span>Little Editor</span>
       </div>
 
       <div className="header__search">
-        <div className="header__search-icon">
+        {/* <div className="header__search-icon">
           <Icon type="search" />
-        </div>
+        </div> */}
 
-        <div className="header__search-input">
+        {/* <div className="header__search-input">
           <input type="search" placeholder="Workspace" />
-        </div>
+        </div> */}
       </div>
 
       <div className="header__suggestions">

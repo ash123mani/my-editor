@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from 'antd';
 
 class OptionsBar extends React.Component {
-  tabOptions = ['All', 'BookMarks', 'Archieved '];
+  tabOptions = ['Your List'];
 
   onClick = e => {
     this.props.setTab(e.target.id);
@@ -28,7 +28,7 @@ class OptionsBar extends React.Component {
     return (
       <div className="options-bar">
         <div className="options-bar__items-option">
-          <span>Items</span>
+          <span>Menu</span>
 
           <div>
             <Icon type="right" />

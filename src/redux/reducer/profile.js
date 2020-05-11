@@ -4,7 +4,7 @@ const initialState = {
   showProfileModal: false,
   firstName: '',
   lastName: '',
-  profileIconData: '',
+  profileIconData: 'Name',
 };
 
 export const profile = (state = initialState, action) => {
