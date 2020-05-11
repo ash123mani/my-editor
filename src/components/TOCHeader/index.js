@@ -50,13 +50,13 @@ class TOCHeader extends Component {
                 <div id="item" onClick={this.onItemOptionsClick}>
                   <div className="create-options__item">
                     <Icon type="plus" />
-                    <span id="item">Create iteam</span>
+                    <span id="item">Add File</span>
                   </div>
                 </div>
                 <div id="item" onClick={this.onClusterOptionsClick}>
                   <div className="create-options__item">
                     <Icon type="plus-square" />
-                    <span id="cluster">Create cluster</span>
+                    <span id="cluster">Add Folder</span>
                   </div>
                 </div>
               </div>

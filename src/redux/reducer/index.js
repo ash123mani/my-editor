@@ -6,6 +6,7 @@ import { clusterContent } from './clusterContent';
 import { independentItem } from './independentItem';
 import { itemContent } from './itemContent';
 import { selectedType } from './currentSelectedType';
+import { profile } from './profile';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -15,8 +16,8 @@ const persistConfig = {
   key: 'root',
   storage: storage,
   // blacklist: ['selectedType'],
-  stateReconciler: autoMergeLevel2 // see "Merge Process" section for details.
- };
+  stateReconciler: autoMergeLevel2, // see "Merge Process" section for details.
+};
 
 const rootReducer = combineReducers({
   selectedTab,
@@ -25,10 +26,9 @@ const rootReducer = combineReducers({
   independentItem,
   itemContent,
   selectedType,
+  profile,
 });
 
 const pReducer = persistReducer(persistConfig, rootReducer);
 
-
 export default pReducer;
-

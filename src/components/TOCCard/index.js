@@ -70,11 +70,14 @@ class TOCCard extends React.Component {
                   itemLayout="horizontal"
                   dataSource={data}
                   renderItem={item => (
-                    <div
-                      className="cluster-item-title"
-                      onClick={this.onClusterItemClick.bind(this, clusterItem.itemId)}
-                    >
-                      <List.Item.Meta description={`${clusterItem.title.blocks[0].text}`} />
+                    <div>
+                      <div
+                        className="cluster-item-title"
+                        onClick={this.onClusterItemClick.bind(this, clusterItem.itemId)}
+                      >
+                        <Icon type="file" />
+                        <List.Item.Meta description={`${clusterItem.title.blocks[0].text}`} />
+                      </div>
                     </div>
                   )}
                 />
@@ -99,14 +102,14 @@ class TOCCard extends React.Component {
           dataSource={data}
           renderItem={item => (
             <List.Item>
-              {item.type === 'cluster' ? <Icon type="copyright" /> : <Icon type="info-circle" />}
+              {item.type === 'cluster' ? <Icon type="folder" /> : <Icon type="file" />}
 
               <div onClick={this.itemClicked.bind(this, item)}>
                 <List.Item.Meta description={`${item.title.blocks[0].text}`} />
               </div>
 
               {item.type === 'cluster' ? (
-                <Popover placement="top" content="Create Item">
+                <Popover placement="top" content="Add File">
                   <div onClick={this.createClusterItem} id={item.id} className="circle" />
                 </Popover>
               ) : (

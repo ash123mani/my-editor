@@ -12,9 +12,17 @@ export const setClusterTitle = title => {
   };
 };
 
-export const setClusterItem = payload => {
+export const setClusterItem = (payload, id = null) => {
   const date = new Date();
-  const itemId = `${payload.parentId}--cItem-${date.getTime().toString()}`;
+  let itemId;
+  console.log('id', id);
+
+  if (id) {
+    itemId = id;
+  } else {
+    itemId = `${payload.parentId}--cItem-${date.getTime().toString()}`;
+  }
+
   return {
     type: NEW_CLUSTER_ITEM,
     payload: {

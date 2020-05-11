@@ -27,9 +27,9 @@ export const selectedType = (state = initialState, action) => {
       return { ...state, selectedClusters: selectedClusters };
 
     case SET_SELECTED_CLUSTER_ITEM_ID:
-      return { ...state, clusterItemId: action.payload };
+      return { ...state, clusterItemId: action.payload, selectedIndependentItemId: null };
     case SET_SELECTED_INDEPENDENT_ITEM_ID:
-      return { ...state, selectedIndependentItemId: action.payload };
+      return { ...state, selectedIndependentItemId: action.payload, clusterItemId: null, itemParentId: null };
     case CURRENTLY_SLECETED:
       return { ...state, currentlySelectedId: action.payload };
     default:

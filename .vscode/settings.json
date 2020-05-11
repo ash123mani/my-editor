@@ -1,5 +1,5 @@
 {
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "prettier.printWidth": 120,
   "editor.wordWrap": "wordWrapColumn",
   "editor.wrappingIndent": "indent",
@@ -7,5 +7,6 @@
   "prettier.singleQuote": true,
   "editor.fontLigatures": true,
   "editor.wordWrapColumn": 120,
-  "editor.showUnused": false
+  "editor.showUnused": false,
+  "prettier.requireConfig": true
 }

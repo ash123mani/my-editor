@@ -63,9 +63,9 @@ const mapDispatchToProps = dispatch => {
     setClusterTitle: clusterTitle => dispatch(setClusterTitle(clusterTitle)),
     setIndependentItemHeading: data => dispatch(setIndependentItemHeading(data)),
     setIndependentItemContent: data => dispatch(setIndependentItemContent(data)),
-    createItemContent: data => dispatch(createItemContent(data)),
+    createItemContent: (data, id) => dispatch(createItemContent(data, id)),
     itemToCreate: itemType => dispatch(itemToCreate(itemType)),
-    setClusterItem: clusterItemData => dispatch(setClusterItem(clusterItemData)),
+    setClusterItem: (clusterItemData, clusterItemId) => dispatch(setClusterItem(clusterItemData, clusterItemId)),
   };
 };
 
@@ -84,7 +84,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ContentScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ContentScreen);

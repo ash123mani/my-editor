@@ -36,6 +36,27 @@ class CreateItem extends React.PureComponent {
     this.props.itemToCreate('');
   };
 
+  onSubmitEdited = () => {
+    const { selectedClusterItemId, selectedIndependentItemId } = this.props;
+    if (selectedClusterItemId) {
+      const clusterItemData = {
+        parentId: selectedClusterItemId.split('--cItem-')[0],
+        data: {
+          title: this.props.currentItemHeading,
+          content: this.props.currentItemContent,
+        },
+      };
+      this.props.setClusterItem(clusterItemData, selectedClusterItemId);
+    } else {
+      const data = {
+        title: this.props.currentItemHeading,
+        content: this.props.currentItemContent,
+      };
+      this.props.createItemContent(data, selectedIndependentItemId);
+    }
+    this.props.itemToCreate('');
+  };
+
   render() {
     const {
       setClusterTitle,
@@ -78,13 +99,19 @@ class CreateItem extends React.PureComponent {
               selectedIndependentItemId={selectedIndependentItemId}
               items={items}
             />
-            {selectedItem !== 'showClusterItem' && selectedItem !== 'independentItem' ? (
+            {selectedItem === 'item' || selectedItem === 'clusterItem' ? (
               <div className="create-item__submit-button">
                 <Button type="dashed" size={size} onClick={this.onSubmitItem}>
                   Save It
                 </Button>
               </div>
-            ) : null}
+            ) : (
+              <div className="create-item__submit-button">
+                <Button type="dashed" size={size} onClick={this.onSubmitEdited}>
+                  Saved Edited
+                </Button>
+              </div>
+            )}
           </React.Fragment>
         ) : (
           <ContentHeading heading="cluster" setTitle={setClusterTitle} itemToCreate={itemToCreate} />

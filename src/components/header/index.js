@@ -1,7 +1,10 @@
 import React from 'react';
 import { Icon, Popover } from 'antd';
 
-const Header = () => {
+const Header = props => {
+  const { showProfileModal, profileIconData } = props;
+  console.log('yolo', props);
+
   return (
     <div className="header">
       <div className="header__menu-fold">
@@ -24,7 +27,7 @@ const Header = () => {
       </div>
 
       <div className="header__suggestions">
-        <div>
+        {/* <div>
           <Icon type="user-add" />
           <span>Invite People</span>
         </div>
@@ -46,10 +49,12 @@ const Header = () => {
             <Icon type="bell" />
             <span />
           </div>
-        </Popover>
+        </Popover> */}
 
         <Popover content={'Account'} trigger="hover" mouseEnterDelay={0.7}>
-          <div className="header__suggestions-user">AT</div>
+          <div className="header__suggestions-user" onClick={() => showProfileModal(true)}>
+            {profileIconData}
+          </div>
         </Popover>
       </div>
     </div>

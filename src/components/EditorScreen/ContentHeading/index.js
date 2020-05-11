@@ -4,7 +4,7 @@ import { Editor, EditorState, convertToRaw, getDefaultKeyBinding, ContentState }
 import editorData from '../../../utils/editorData';
 import editorUtils from '../../../utils/editorUtlis';
 
-const contentState = ContentState.createFromText('Title');
+const contentState = ContentState.createFromText('Add Title');
 
 class ContentHeading extends React.Component {
   constructor(props) {
@@ -14,12 +14,6 @@ class ContentHeading extends React.Component {
       selectedClusterId: null,
       selectedIndependentItemId: null,
     };
-  }
-
-  componentDidMount() {
-    if (!this.state.selectedClusterId) {
-      this.focus();
-    }
   }
 
   static getDerivedStateFromProps(props, state) {
