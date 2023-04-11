@@ -80,13 +80,13 @@ class ContentHeading extends React.Component {
   };
 
   render() {
-    const { selectedClusterItemId, selectedItem } = this.props;
+    const { selectedItem } = this.props;
 
     return (
       <div className="create-item__name">
         <div className="tag">
           <div className="tag-name">
-            {selectedItem == 'item' || selectedItem == 'clusterItem' || selectedItem == 'cluster'
+            {selectedItem === 'item' || selectedItem === 'clusterItem' || selectedItem === 'cluster'
               ? 'Add Item'
               : 'Read Only'}
           </div>

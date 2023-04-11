@@ -36,7 +36,6 @@ class TOCHeader extends Component {
   };
 
   render() {
-    const { isSideBarMinimized } = this.props;
     return (
       <React.Fragment>
         <div className="top-bar">
